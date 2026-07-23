@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baño María: Pop Up (Era 5) — Universo Musical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,600&family=Merriweather:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =============================================================
+   UNIVERSO MUSICAL — CA7RIEL & Paco Amoroso
+   Estética editorial (Rolling Stone) — blanco, serif, rojo quirúrgico
+   ============================================================= */
+:root{
+  --bg: #FFFFFF;
+  --bg-soft: #FAFAFA;
+  --card: #FFFFFF;
+  --card-hover: #F5F5F5;
+  --line: #E0E0E0;
+  --text: #111111;
+  --text-dim: #555555;
+
+  --red: #D71920;
+  --ink: #111111;
+
+  /* Todas las categorías comparten el mismo rojo editorial (a propósito:
+     el sistema Rolling Stone no codifica temas por color, usa el rojo
+     como acento único y consistente para cualquier etiqueta). */
+  --lime: #D71920;
+  --magenta: #D71920;
+  --cyan: #D71920;
+  --orange: #D71920;
+  --violet: #D71920;
+  --gold: #D71920;
+  --gray: #555555;
+
+  --display: 'Merriweather', serif;
+  --body: 'Lora', serif;
+  --mono: 'Inter', sans-serif;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  font-size:17px;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+::selection{ background:var(--red); color:#fff; }
+a{ color:inherit; }
+button{ font-family:inherit; cursor:pointer; }
+:focus-visible{ outline:2px solid var(--red); outline-offset:2px; }
+
+/* =========================================================
+   NAV superior — sticky, blanco, logo centrado
+   ========================================================= */
+#site-nav{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:center; gap:30px;
+  background:#fff; border-bottom:1px solid var(--line);
+  padding:14px 20px;
+}
+#site-nav a{
+  font-family:var(--mono); font-weight:600; font-size:.85rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink); text-decoration:none;
+  padding-bottom:4px; border-bottom:2px solid transparent;
+}
+#site-nav a:hover{ color:var(--red); }
+#site-nav a.active{ border-bottom-color:var(--red); color:var(--red); }
+
+/* =========================================================
+   HERO — color sólido por Era (o foto, cuando la tengamos)
+   ========================================================= */
+.hero{
+  position:relative;
+  min-height:46vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:56px 24px 44px;
+  background:var(--hero-bg, #fff);
+  color:var(--hero-fg, var(--ink));
+}
+.hero-eyebrow{
+  font-family:var(--mono); font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--hero-fg, var(--ink)); font-size:.85rem; opacity:.85;
+}
+.hero .kicker{
+  font-family:var(--mono); font-weight:700; font-size:.85rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--red); background:#fff; display:inline-block;
+  padding:5px 12px; margin-top:16px;
+}
+.hero h1{
+  font-family:var(--display);
+  font-weight:900;
+  font-size:clamp(2.2rem, 8vw, 4.4rem);
+  line-height:1.1;
+  color:var(--hero-fg, var(--ink));
+  margin-top:14px;
+}
+.hero h1 span{ display:block; }
+.hero h1.titulo-eras{ font-size:clamp(2.4rem, 8vw, 4.6rem); }
+.hero p.sub{
+  max-width:640px; margin-top:16px; color:var(--hero-fg, var(--text-dim)); font-size:1.2rem;
+  font-style:italic; font-family:var(--body); opacity:.9;
+}
+.hero-divider{
+  width:60px; height:2px; background:var(--red); border:none; margin:22px auto 4px;
+}
+.contador-shows{
+  margin-top:22px; display:inline-block;
+  font-family:var(--mono); font-size:1.05rem; font-weight:600;
+  background:#fff; color:var(--ink); border:1px solid var(--line);
+  padding:10px 18px;
+}
+.contador-shows strong{ color:var(--red); }
+.hero .stats{
+  display:flex; gap:44px; margin-top:30px; flex-wrap:wrap; justify-content:center;
+}
+.hero .stats div{ font-family:var(--mono); text-align:center; }
+.hero .stats strong{ display:block; font-family:var(--display); font-weight:900; font-size:1.9rem; color:var(--hero-fg, var(--ink)); }
+.hero .stats span{ font-size:.8rem; color:var(--hero-fg, var(--text-dim)); text-transform:uppercase; letter-spacing:.1em; opacity:.85; }
+.stats-source{
+  font-family:var(--mono); font-size:.85rem; color:var(--hero-fg, var(--text-dim));
+  opacity:.7; margin-top:28px; width:100%; text-align:center;
+}
+
+/* =========================================================
+   Bloque foto + texto de la Era
+   ========================================================= */
+.era-bloque{
+  max-width:960px; margin:48px auto; padding:0 24px;
+  display:flex; gap:32px; flex-wrap:wrap; align-items:flex-start;
+}
+.era-foto{
+  width:320px; aspect-ratio:3/2; flex-shrink:0;
+  background:var(--bg-soft); border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:.85rem; color:var(--text-dim); text-align:center; padding:16px;
+}
+.era-foto img{ width:100%; height:100%; object-fit:cover; }
+.era-texto{ flex:1; min-width:280px; font-size:1.15rem; line-height:1.8; color:var(--text); font-family:var(--body); text-align:justify; }
+.era-texto p{ margin-bottom:18px; }
+.era-texto p:last-child{ margin-bottom:0; }
+.era-texto strong{ font-weight:700; color:var(--ink); }
+
+/* ---- Variante: 2 fotos en fila arriba, texto ancho completo debajo ---- */
+.era-bloque-doble{ flex-direction:column; }
+.era-fotos-fila{ display:flex; gap:20px; width:100%; flex-wrap:wrap; }
+.era-fotos-fila .era-foto{ flex:1; width:auto; min-width:220px; }
+.era-bloque-doble .era-texto{ width:100%; }
+
+/* =========================================================
+   Navegación Era anterior / siguiente / inicio
+   ========================================================= */
+.era-prevnext{
+  max-width:960px; margin:0 auto 20px; padding:0 24px;
+  display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.era-prevnext a{
+  font-family:var(--mono); font-weight:600; font-size:.9rem; color:var(--ink); text-decoration:none;
+  border:1px solid var(--line); padding:10px 18px; text-transform:uppercase; letter-spacing:.04em;
+}
+.era-prevnext a:hover{ border-color:var(--red); color:var(--red); }
+.era-prevnext .vacio{ visibility:hidden; }
+.era-prevnext-bottom{ margin:60px auto 30px; padding-top:30px; border-top:1px solid var(--line); }
+.era-prevnext-bottom .volver-inicio{
+  color:var(--red); border-color:var(--red); font-weight:700;
+}
+
+/* =========================================================
+   FILTROS
+   ========================================================= */
+#filterbar{
+  position:sticky; top:53px; z-index:40;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);
+  padding:14px 20px;
+  display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:center;
+}
+.filter-group{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:center; }
+.filter-label{
+  font-family:var(--mono); font-size:.8rem; text-transform:uppercase; letter-spacing:.1em;
+  color:var(--text-dim); margin-right:4px;
+}
+.pill{
+  font-family:var(--mono); font-weight:600; font-size:.85rem;
+  background:transparent; color:var(--text-dim);
+  border:1px solid var(--line); border-radius:100px;
+  padding:7px 16px; transition:all .15s ease;
+}
+.pill:hover{ border-color:var(--red); color:var(--red); }
+.pill.active{ color:#fff; background:var(--red); border-color:var(--red); font-weight:700; }
+select{
+  font-family:var(--mono); background:#fff; color:var(--text);
+  border:1px solid var(--line); border-radius:4px; padding:7px 10px; font-size:.9rem;
+}
+#reset-filters{
+  font-family:var(--mono); font-size:.8rem; color:var(--text-dim);
+  background:none; border:1px dashed var(--line); border-radius:4px; padding:6px 12px;
+}
+#reset-filters:hover{ color:var(--red); border-color:var(--red); }
+
+/* =========================================================
+   LÍNEA DE TIEMPO — franjas, una debajo de la otra
+   ========================================================= */
+#timeline-wrap{ max-width:760px; margin:56px auto 100px; padding:0 24px; }
+#timeline{ display:flex; flex-direction:column; }
+.empty-state{ text-align:center; padding:80px 20px; color:var(--text-dim); font-family:var(--mono); }
+
+@keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
+
+.tl-row{
+  display:flex; gap:24px; align-items:flex-start;
+  padding:26px 0; border-top:1px solid var(--line);
+  cursor:pointer; transition:opacity .15s ease;
+  opacity:0; transform:translateY(14px);
+  animation:riseIn .4s ease forwards;
+}
+.tl-row:hover{ opacity:.7; }
+.tl-row-thumb{
+  width:150px; aspect-ratio:3/2; flex-shrink:0; overflow:hidden;
+  background:var(--bg-soft); position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.tl-row-thumb img{ width:100%; height:100%; object-fit:cover; }
+.tl-row-info{ flex:1; min-width:0; }
+
+.tl-date{ font-family:var(--mono); font-size:.8rem; color:var(--text-dim); letter-spacing:.03em; }
+.tl-cat{
+  display:inline-block; font-family:var(--mono); font-size:.72rem; text-transform:uppercase;
+  letter-spacing:.1em; margin-left:10px; color:var(--tag-color, var(--red)); font-weight:700;
+}
+.tl-title{ font-family:var(--display); font-weight:900; font-size:1.5rem; line-height:1.3; margin-top:10px; color:var(--ink); }
+.tl-thumb .ph{ font-family:var(--mono); font-size:.9rem; color:var(--text-dim); text-align:center; padding:8px; }
+.tl-play-badge{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:46px; height:46px; border-radius:50%;
+  background:rgba(255,255,255,.9); color:var(--red);
+  display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+  border:1.5px solid var(--red);
+}
+.tl-lugar{ margin-top:8px; font-family:var(--mono); font-size:.85rem; color:var(--text-dim); }
+.tl-teaser{ margin-top:12px; font-size:1.05rem; color:var(--text-dim); line-height:1.6; font-family:var(--body); font-style:italic; }
+.tl-leer{
+  margin-top:12px; font-family:var(--mono); font-weight:700; font-size:.85rem;
+  letter-spacing:.05em; color:var(--red); text-transform:uppercase;
+}
+.tl-publico{ font-weight:400; color:var(--text-dim); font-size:.85em; }
+
+@media (max-width: 600px){
+  .tl-row{ flex-direction:column; }
+  .tl-row-thumb{ width:100%; }
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+#modal-overlay{
+  position:fixed; inset:0; background:rgba(17,17,17,.75); backdrop-filter:blur(2px);
+  z-index:200; display:flex; align-items:center; justify-content:center; padding:20px;
+  opacity:0; visibility:hidden; transition:opacity .2s ease, visibility .2s ease;
+}
+#modal-overlay.open{ opacity:1; visibility:visible; }
+#modal{
+  background:#fff; border:1px solid var(--line);
+  max-width:640px; width:100%; max-height:88vh; overflow-y:auto;
+  padding:32px; position:relative;
+  transform:scale(.97); transition:transform .2s ease;
+}
+#modal-overlay.open #modal{ transform:scale(1); }
+#modal-close{
+  position:absolute; top:18px; right:18px; background:#fff; border:1px solid var(--line);
+  color:var(--ink); width:34px; height:34px; border-radius:50%; font-size:1rem; z-index:2;
+}
+#modal-close:hover{ background:var(--red); color:#fff; border-color:var(--red); }
+#modal-media{ position:relative; width:100%; margin-bottom:16px; background:#000; aspect-ratio:16/9; }
+#modal-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+#modal-photo{
+  width:100%; aspect-ratio:16/9; overflow:hidden; margin-bottom:18px;
+  background:var(--bg-soft); display:flex; align-items:center; justify-content:center;
+}
+#modal-photo img{ width:100%; height:100%; object-fit:cover; }
+#modal-photo.hidden{ display:none; }
+.modal-cat-row{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px; }
+.modal-cat-chip{
+  font-family:var(--mono); font-weight:700; font-size:.75rem; text-transform:uppercase; letter-spacing:.1em;
+  color:var(--red); display:inline-block;
+}
+#modal-date{ font-family:var(--mono); font-size:.9rem; color:var(--text-dim); margin-bottom:6px; }
+#modal-title{ font-family:var(--display); font-weight:900; font-size:1.8rem; line-height:1.25; margin-bottom:14px; color:var(--ink); }
+#modal-desc{ color:var(--text); line-height:1.75; font-size:1.1rem; margin-bottom:18px; font-family:var(--body); }
+#modal-data{ display:flex; flex-wrap:wrap; gap:10px; }
+.data-chip{
+  font-family:var(--mono); font-size:.85rem; background:var(--bg-soft);
+  border:1px solid var(--line); padding:8px 12px;
+}
+.data-chip b{ color:var(--red); }
+.modal-yt-link{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  display:flex; align-items:center; gap:8px;
+  font-family:var(--mono); font-weight:700; font-size:.95rem; color:#fff;
+  text-decoration:none; background:rgba(17,17,17,.85); border:1.5px solid #fff;
+  padding:12px 22px; border-radius:100px; white-space:nowrap;
+}
+.modal-yt-link:hover{ background:var(--red); border-color:var(--red); }
+
+footer{
+  text-align:center; padding:40px 20px 60px; color:var(--text-dim); font-family:var(--mono); font-size:.9rem;
+  border-top:1px solid var(--line);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}
+
+</style>
+</head>
+<body>
+
+  <nav id="site-nav">
+    <a href="index.html">Inicio</a>
+    <a href="historia.html">Historia</a>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-eyebrow">Universo CA7RIEL &amp; Paco Amoroso</div>
+    <hr class="hero-divider">
+    <div class="hero-eyebrow" id="era-eyebrow">ERA —/7</div>
+    <h1 class="titulo-eras" id="era-titulo">—</h1>
+    <p class="sub" id="era-periodo">—</p>
+    <div class="contador-shows">🎤 Shows en esta era: <strong id="era-shows">—</strong></div>
+  </section>
+
+  <div class="era-bloque" id="era-bloque"></div>
+
+  <div class="era-prevnext">
+    <a id="era-prev" href="#">◀ Era anterior</a>
+    <a id="era-next" href="#">Era siguiente ▶</a>
+  </div>
+
+  <!-- ============ FILTROS ============ -->
+  <div id="filterbar">
+    <div class="filter-group">
+      <span class="filter-label">Categoría</span>
+      <div id="cat-pills"></div>
+    </div>
+    <button id="reset-filters">✕ Limpiar filtros</button>
+  </div>
+
+  <!-- ============ TIMELINE ============ -->
+  <div id="timeline-wrap">
+        <div id="timeline"></div>
+  </div>
+
+  <!-- ============ MODAL ============ -->
+  <div id="modal-overlay">
+    <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button id="modal-close" aria-label="Cerrar">✕</button>
+      <div id="modal-media"></div>
+      <div id="modal-photo"></div>
+      <div id="modal-cat" class="modal-cat-row"></div>
+      <div id="modal-date"></div>
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <div id="modal-data"></div>
+    </div>
+  </div>
+
+  <div class="era-prevnext era-prevnext-bottom">
+    <a id="era-prev-bottom" href="#">◀ Era anterior</a>
+    <a href="index.html" class="volver-inicio">🏠 Volver al inicio</a>
+    <a id="era-next-bottom" href="#">Era siguiente ▶</a>
+  </div>
+
+  <footer>
+    Hecho por Luces del Sur · última actualización: <span id="last-update">—</span>
+  </footer>
+
+<script>
+  window.PAGE_CONFIG = { eraSolo: "Baño María: Pop Up", showsAcumulados: "39", hrefEras: ["era1.html","era2.html","era3.html","era4.html","era5.html","era6.html","era7.html"], colorEra: "#B0141C", colorEraTexto: "#FFFFFF" };
+</script>
+<script>
+/* =============================================================
+   1) DATOS DEL TIMELINE — EDITÁ ESTO LIBREMENTE
+   -------------------------------------------------------------
+   Cada evento es un objeto con:
+     fecha:      "AAAA-MM-DD" (si no sabés el mes/día exacto, usá "AAAA-01-01")
+     categorias: array con 1 o más categorías, ej: ["Canción"] o
+                 ["Canción", "Video Clip"]. Deben coincidir con una clave
+                 de CATEGORIAS (más abajo). (Las Eras son la excepción:
+                 usan "categoria: \"Era\"" en singular, no toques eso.)
+     titulo:     título corto
+     teaser:     1 frase que aparece en la tarjeta chica
+     descripcion:texto más largo que aparece al hacer click
+     foto:       URL de una imagen (dejalo en "" si todavía no tenés la foto:
+                 se muestra un placeholder para que sepas dónde va)
+     youtube:    ID del video de YouTube (la parte después de "v=" en la URL,
+                 son 11 caracteres). Dejalo en "" si no hay video para ese hito.
+     datos:      lista de pares { etiqueta, valor } para mostrar como "ficha técnica"
+     destacado:  false = solo un punto lleno en la línea (sin tarjeta).
+                 Si no lo escribís, por defecto es true (tarjeta completa).
+     publico:    opcional, texto tipo "8.000 personas" — aparece entre
+                 paréntesis al lado del título (para Conciertos).
+     enlace:     opcional, URL de un artículo/nota externa (para Entrevistas
+                 sin foto ni video). Si está presente, el click NO abre el
+                 modal: te lleva directo a esa URL en una pestaña nueva.
+                 Si no hay foto/youtube/enlace, la tarjeta se ve sin
+                 miniatura (solo el título).
+   ============================================================= */
+
+  const CATEGORIAS = {
+    "Era":        { color: "var(--violet)" },
+    "Canción":    { color: "var(--lime)" },
+    "Álbum":      { color: "var(--magenta)" },
+    "EP":         { color: "var(--cyan)" },
+    "Video Clip": { color: "var(--orange)" },
+    "Concierto":  { color: "var(--gold)" },
+    "Shortfilm":  { color: "var(--red)" },
+    "Entrevista": { color: "var(--red)" },
+    "Artículo":   { color: "var(--red)" },
+  };
+
+  // Devuelve el/los color(es) de un array de categorías
+  function catColors(categorias){
+    return (categorias || []).map(c => CATEGORIAS[c] ? CATEGORIAS[c].color : 'var(--lime)');
+  }
+  // Devuelve un valor CSS de background: sólido si es 1 categoría,
+  // conic-gradient partido en porciones iguales si son 2 o más.
+  function catBackground(categorias){
+    const colors = catColors(categorias);
+    if(colors.length <= 1) return colors[0] || 'var(--lime)';
+    const step = 360 / colors.length;
+    const stops = colors.map((c, i) => `${c} ${i*step}deg ${(i+1)*step}deg`).join(', ');
+    return `conic-gradient(${stops})`;
+  }
+
+  /* Las Eras son hitos con categoria:"Era" que además llevan el campo
+     "hasta" (fecha de cierre del período). El resto de los hitos se
+     agrupan automáticamente bajo la Era vigente según su fecha. */
+  const DATA = [
+    // ---------- ERAS ----------
+    {
+      fecha: "2011-01-01", hasta: "2017-12-31", categoria: "Era",
+      titulo: "Astor", lugar: "Buenos Aires, Argentina",
+      colorEra: "var(--violet)",
+      teaser: "Los años en salas de ensayo.",
+      descripcion: "<p>Crecieron musicalmente juntos. «Astor y las flores de marte» fue su primera banda, con pulsión rockera-funkera-spinetteana. Solo grabaron un álbum y un single para un concurso de bandas. Por esos años Catriel lanza su primer disco (2015) y firma por primera vez con 5020 Records el sello que lo acompaña en su carrera astronómica años más tarde.</p>",
+      foto: "images/era1-astor-y-las-flores-de-marte.jpg", youtube: "",
+      datos: [{etiqueta:"Período", valor:"2011–2017"}]
+    },
+    {
+      fecha: "2018-01-01", hasta: "2020-05-31", categoria: "Era",
+      titulo: "Hacking the Scene", lugar: "Buenos Aires, Argentina",
+      colorEra: "var(--cyan)",
+      teaser: "Hackeo a la escena del trap",
+      descripcion: "<p>Para cuando se unieron como dúo, Catriel ya se llamaba Ca7riel (con el 7, su nombre de rapero) y tocaba en escenarios. Su primera canción juntos fue \"Piola\", le siguió \"A mí no\" y terminaron de hackear la matrix de la escena del trap argentino con \"JALA JALA\" y su video diseñado para ser visto en el celular.</p><p>En julio de 2018 se presentaron en un pequeño lugar, y para fin de ese año hicieron sold out en dos Niceto Club (una sala tan húmeda como emblemática, que aloja a unas 1200 almas desaforadas).</p><p>En 2019 llegó su primera gira de 54 fechas por Argentina, Uruguay y Paraguay. Fue también la primera vez que cruzaron el charco para desembarcar en España y Alemania. El cierre fue en el Estadio Obras, histórico tester para el rock nacional.</p><p>Estaban preparando el terreno para dar el gran salto: el 16 de febrero de 2020 se presentaron en el Festival Cara B en Barcelona, una conocida plataforma para artistas con proyección internacional.</p>",
+      foto: "images/era2-pared-roja.jpg", youtube: "",
+      datos: [{etiqueta:"Período", valor:"2018–2020"}]
+    },
+    {
+      fecha: "2020-06-01", hasta: "2021-12-31", categoria: "Era",
+      titulo: "Shining Solo", lugar: "Argentina",
+      colorEra: "var(--gray)",
+      teaser: "Una pandemia mundial y dos discos icónicos.",
+      descripcion: "<p>La pandemia interrumpe el impulso que habían construido tras el histórico Obras de 2019. La intensidad acumulada empieza a pasar factura y, para cuidar la amistad y evitar que el proyecto se desgaste, deciden separarse temporalmente. Es una etapa introspectiva en la que cada uno busca su propia voz: nacen El Disko (Ca7riel) y Saeta (Paco Amoroso).</p><p><strong>Ca7riel</strong> (Página/12, 2020): \"Antes de la cuarentena me estaba volviendo loco. Estaba metido en una rueda de hámster donde el personaje de Ca7riel se estaba comiendo al Cato real. El parate me salvó la cabeza\".</p><p><strong>Paco Amoroso</strong> (Página/12, 2021): \"Este disco solista fue un poco como hacerme adulto. Tuve que sentarme a escribir y hacerme cargo de mis miedos sin tener el escudo del chiste o a Cato al lado para tapar los baches\".</p>",
+      foto: "", fotos: ["images/era3-parrilla.jpeg", "images/era3-glitch-face.jpeg"], youtube: "",
+      datos: [{etiqueta:"Período", valor:"2020–2021"}]
+    },
+    {
+      fecha: "2022-01-01", hasta: "2023-12-31", categoria: "Era",
+      titulo: "Temporada II", lugar: "Argentina",
+      colorEra: "var(--orange)",
+      teaser: "",
+      descripcion: "<p>Vuelven sintonizados en otra frecuencia. Ya no son los chicos rústicos del trap de 2019: regresan después de absorber la electrónica, el house y el pop durante sus proyectos solistas. Lanzan \"Paga Dios\" y \"En el After\", confirmando que la química seguía intacta y sellando el reencuentro con un Obras a fin de año.</p><p><strong>Paco Amoroso</strong> (Clarín, 2022): \"Hacer música solos estuvo buenísimo, pero cuando nos volvimos a juntar en el estudio y tiramos la primera barra, nos miramos y dijimos: 'Claro, es que esto que nos pasa a nosotros dos juntos no pasa en ningún otro lado del mundo'\".</p><p><strong>Ca7riel</strong> (Pousta, 2022): \"Volvimos porque nos extrañábamos como hermanos, pero también porque nos dimos cuenta de que la bestia que creamos juntos camina sola y tiene hambre propia\".</p>",
+      foto: "images/era4-auto.jpg", youtube: "",
+      datos: [{etiqueta:"Período", valor:"2022–2023"}]
+    },
+    {
+      fecha: "2024-01-01", hasta: "2024-10-03", categoria: "Era",
+      titulo: "Baño María: Pop Up", lugar: "Argentina / gira",
+      colorEra: "var(--magenta)",
+      teaser: "",
+      descripcion: "<p>Baño María se convierte en el primer álbum de estudio de larga duración de Ca7riel & Paco Amoroso. Es la era del jacuzzi, de la fiesta constante y del coqueteo con el pop electrónico bailable, donde el dúo lleva su universo estético y sonoro a una nueva escala. Mientras tanto, la prensa internacional empieza a notar que alrededor de ellos está ocurriendo algo distinto.</p><p><strong>Paco Amoroso</strong> (The Guardian, 2025, recordando el impacto del álbum): \"La música pop actual le tiene miedo a ofender, es todo demasiado limpio y corporativo. Nosotros con Baño María vinimos a devolverle el peligro, el sudor y la deformidad\".</p>",
+      foto: "images/era5-bano-maria.webp", youtube: "",
+      datos: [{etiqueta:"Período", valor:"Enero – 3 de octubre de 2024"}]
+    },
+    {
+      fecha: "2024-10-04", hasta: "2025-12-31", categoria: "Era",
+      titulo: "Papota: The Big Bang Duo", lugar: "Global",
+      colorEra: "var(--lime)",
+      teaser: "Estallido y expansión global",
+      descripcion: "<p>El Tiny Desk se convierte en un fenómeno viral histórico y marca un punto de inflexión. La banda trasciende definitivamente las fronteras argentinas y alcanza una escala global: gira por Europa, desembarca en Asia —donde los bautizan \"Katopako\" en Tower Records Shibuya— y llega al Main Stage de festivales como Fuji Rock, Glastonbury y Coachella.</p><p><strong>Ca7riel</strong> (Rolling Stone Japan, 2025): \"Había japoneses en el Fuji Rock que no entendían un carajo de nuestra jerga ni de lo que decíamos, pero cuando explota el groove de la banda, el cuerpo entiende mucho antes que la cabeza\".</p>",
+      foto: "images/era6-papota-globos.jpeg", youtube: "",
+      datos: [{etiqueta:"Período", valor:"4 de octubre de 2024 – 2025"}]
+    },
+    {
+      fecha: "2026-01-01", hasta: "2026-12-31", categoria: "Era",
+      titulo: "Free Spirits: Global Pop Stars", lugar: "Global",
+      colorEra: "var(--gold)",
+      teaser: "",
+      descripcion: "<p>Tras la explosión internacional, la dupla deja de ocupar el lugar de revelación para consolidarse como cabeza de cartel en los mercados anglo y europeo. Frente a la presión del éxito y de la industria, construyen el concepto del Free Spirits Wellness Center, un centro de rehabilitación espiritual ficticio que utiliza la ironía como respuesta al fenómeno global que los rodea. Es la etapa en la que comparten escena y colaboran con figuras como Sting, Anderson .Paak y Jack Black, demostrando que se puede jugar en las grandes ligas de la industria sin perder un milímetro de su irreverente esencia.</p>",
+      foto: "images/era7-free-spirits.jpeg", youtube: "",
+      datos: [{etiqueta:"Período", valor:"2026"}]
+    },
+
+    // ---------- HITOS (EP / Concierto / Shortfilm) — EJEMPLOS, completar con info real ----------
+
+    // ========== CARGA 1 (CSV discografia) — Eras 1, 2 y 3 ==========
+    // ---- ERA Primera (2011 - 2017): Retoños de grandeza . Los años en las salas de ensayo. [falta texto se agrega despues] ----
+    {
+      fecha: "2012-11-16", categorias: ["Canción"], lugar: "",
+      titulo: "Astor y las flores de marte - Mazitaguz",
+      teaser: "", descripcion: "Track grabado en el estudio de Lito Vitale, para el concurso Vamos Las Bandas 2012.",
+      foto: "", youtube: "I-2vt-lrnh0",
+      destacado: true
+    },
+    {
+      fecha: "2015-07-29", categorias: ["EP"], lugar: "",
+      titulo: "xCVE7Ex",
+      teaser: "", descripcion: "Álbum autogestionado de CA7RIEL en solitario, grabado en ADG Estudio. Géneros: hip-hop underground, boom bap, rap alternativo, lo-fi.",
+      foto: "", youtube: "GBThdK-OemE",
+      destacado: true
+    },
+    {
+      fecha: "2017-10-10", categorias: ["EP"], lugar: "",
+      titulo: "Vacaciones todo el año",
+      teaser: "", descripcion: "Grabado en casita, mezclado por Lucas Forte.",
+      foto: "", youtube: "4lCpDJyPfmo",
+      destacado: true
+    },
+    // ---- ERA Segunda (2018 - 2019): Nace el mito (2018 - 2019). Hackeo a la escena del trap [falta texto se agrega despues] ----
+    {
+      fecha: "2018-03-08", categorias: ["EP"], lugar: "",
+      titulo: "POVRE",
+      teaser: "", descripcion: "EP solista de CA7RIEL, producido junto a Facundo Yalve (Evlay). Géneros: trap experimental, rap, hip-hop alternativo, rock.",
+      foto: "", youtube: "6edOkpshG6U",
+      destacado: true
+    },
+    {
+      fecha: "2018-11-28", categorias: ["Canción"], lugar: "",
+      titulo: "No Fue (con Chita)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "_5EiaIqB7io",
+      destacado: true
+    },
+    {
+      fecha: "2018-11-20", categorias: ["EP"], lugar: "",
+      titulo: "LIVRE",
+      teaser: "", descripcion: "EP solista de CA7RIEL. Mezclado por Facundo Yalve (Evlay) en apenas media hora. Arte de tapa: Mica Burgos y CA7. Géneros: trap experimental, rap, rock alternativo/industrial, funk.",
+      foto: "", youtube: "WS0YQF5-cZ4",
+      destacado: true
+    },
+    {
+      fecha: "2018-11-25", categorias: ["Canción"], lugar: "",
+      titulo: "JALA JALA",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "k0ZSoIO0ZXw",
+      destacado: true
+    },
+    {
+      fecha: "2019-03-21", categorias: ["Canción"], lugar: "",
+      titulo: "OUKE",
+      teaser: "", descripcion: "Elenco: Paquito, Ca7riel, Lamothe, Pirulo, Lili Blanco, Manu Donnet, Macho Toscani, La Pioji, El Gera 92, Bety y Gustavo. Dirección: Orco Videos.",
+      foto: "images/hito-ouke-cover.jpeg", youtube: "7LIERMc27-Q",
+      destacado: true
+    },
+    {
+      fecha: "2019-07-12", categorias: ["Canción"], lugar: "",
+      titulo: "OLA MINA XD",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "BdRbvvfiBwU",
+      destacado: true
+    },
+    {
+      fecha: "2019-11-01", categorias: ["Canción"], lugar: "",
+      titulo: "MI SOMBRA",
+      teaser: "", descripcion: "Producción musical de Facu Yalve, CA7RIEL y Paco Amoroso. Dirigido por Hernán Kacew, producido por Pantera&Co.",
+      foto: "", youtube: "c1u3jtg4Skg",
+      destacado: true
+    },
+    {
+      fecha: "2019-12-12", categorias: ["Canción"], lugar: "",
+      titulo: "McFly",
+      teaser: "", descripcion: "Producido por Evlay Beats y CA7RIEL. Dirección: Orco Videos.",
+      foto: "", youtube: "Bp0-TarxMH0",
+      destacado: true
+    },
+    {
+      fecha: "2019-12-18", categorias: ["Canción"], lugar: "",
+      titulo: "Cono Hielo",
+      teaser: "", descripcion: "Producido por Evlay Beats y Laucha the Kid. Dirección: Orco Videos, dirección de arte de Lucía Lalor.",
+      foto: "", youtube: "GJxyBZvAGRc",
+      destacado: true
+    },
+    {
+      fecha: "2019-04-18", categorias: ["Canción"], lugar: "",
+      titulo: "Paco Amoroso: Bzrp Music Sessions, Vol. 3",
+      teaser: "", descripcion: "Letra de Paco Amoroso, beat de Axel Fiks. Editado y producido por Bizarrap. Superó los 80 millones de visualizaciones.",
+      foto: "", youtube: "-smN6ZUHzgk",
+      destacado: true
+    },
+    {
+      fecha: "2019-08-30", categorias: ["Canción"], lugar: "",
+      titulo: "Ca7riel: Bzrp Music Sessions, Vol. 14",
+      teaser: "", descripcion: "Sesión de CA7RIEL con Bizarrap. Superó los 20 millones de visualizaciones.",
+      foto: "", youtube: "TzUdpcNV-Q8",
+      destacado: true
+    },
+    {
+      fecha: "2019-12-12", categorias: ["Canción"], lugar: "",
+      titulo: "Todo el día",
+      teaser: "", descripcion: "Canción con Axel Fiks. Producción de Facundo Yalve, dirección de Orco Videos.",
+      foto: "", youtube: "kgMRI3yh6_k",
+      destacado: true
+    },
+    // ---- ERA Tercera (2020 -2021): La separación. Una pandemia mundial y dos discos icónicos. [falta texto se agrega despues] ----
+    {
+      fecha: "2020-06-17", categorias: ["Canción"], lugar: "",
+      titulo: "MI DESEO / Las Vegas Strip",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "FlO-W844Lc4",
+      destacado: true
+    },
+    {
+      fecha: "2020-11-25", categorias: ["Canción"], lugar: "",
+      titulo: "FATAL",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "vW64D12-uAA",
+      destacado: true
+    },
+    {
+      fecha: "2020-09-02", categorias: ["Canción"], lugar: "",
+      titulo: "POLVO",
+      teaser: "", descripcion: "Incluida en el álbum solista El Disko. Producción musical de Tomy Sainz y CA7RIEL, dirigido por Kevin Zeta.",
+      foto: "", youtube: "uenecPEzBTk",
+      destacado: true
+    },
+    {
+      fecha: "2020-12-05", categorias: ["Canción"], lugar: "",
+      titulo: "I Rili Don't Care",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "vKtphI9tN7Y",
+      destacado: true
+    },
+    {
+      fecha: "2021-01-03", categorias: ["Canción"], lugar: "",
+      titulo: "Sabe",
+      teaser: "", descripcion: "Dirigido por Orco Videos, producción de Baby Boom.",
+      foto: "", youtube: "5bZYHFo7ZSI",
+      destacado: true
+    },
+    {
+      fecha: "2021-09-30", categorias: ["Canción"], lugar: "",
+      titulo: "Viuda Negra",
+      teaser: "", descripcion: "Video producido y dirigido por Pampa x Kato. Producción musical de Tadefonk y Alot (Baby Boom).",
+      foto: "", youtube: "kLYkKk9U3j0",
+      destacado: true
+    },
+    {
+      fecha: "2021-11-04", categorias: ["Canción"], lugar: "",
+      titulo: "Chinga Sport",
+      teaser: "", descripcion: "Con Tío La Bomba. Video de Orco Videos, producción musical de Maxi Sayes y Bruno Donato.",
+      foto: "", youtube: "7XBS-dlk_-8",
+      destacado: true
+    },
+    {
+      fecha: "2021-11-25", categorias: ["EP"], lugar: "",
+      titulo: "SAETA",
+      teaser: "", descripcion: "Álbum solista de Paco Amoroso. Producción de Tadeo Kopistinski, Alejandro Glikman, Bruno Donato y Maxi Sayes, entre otros. Géneros: electrónica, house, pop experimental, hip-hop/urban.",
+      foto: "", youtube: "QoE8jici2Fc",
+      destacado: true
+    },
+    {
+      fecha: "2021-11-10", categorias: ["EP"], lugar: "",
+      titulo: "EL DISKO",
+      teaser: "", descripcion: "Álbum solista de CA7RIEL, grabado entre diciembre de 2019 y agosto de 2021. Producción principal de Tomás Sainz y CA7RIEL. Géneros: funk, trap, rock alternativo, electrónica, hip-hop experimental.",
+      foto: "", youtube: "GWYWcDuypRw",
+      destacado: true
+    },
+    {
+      fecha: "2021-01-28", categorias: ["Canción"], lugar: "",
+      titulo: "Muero de Fiesta Este Finde",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "awzbkFbmfaU",
+      destacado: true
+    },
+    {
+      fecha: "2021-11-18", categorias: ["Canción"], lugar: "",
+      titulo: "NIÑO GORDO FLACO (con Wos)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "wZbd_ODaIwM",
+      destacado: true
+    },
+
+    // ========== Hitos de eras posteriores (ya cargados antes) ==========
+    {
+      fecha: "2025-10-01", categorias: ["Concierto"], lugar: "Basilea, Suiza",
+      titulo: "Baloise Session",
+      teaser: "Se presentan en el festival suizo Baloise Session.",
+      descripcion: "En octubre de 2025 se presentan en la Baloise Session, un festival de música en Basilea, Suiza.",
+      foto: "", youtube: "",
+      datos: [{etiqueta:"Lugar", valor:"Basilea, Suiza"}]
+    },
+
+    // ========== CONCIERTOS REALES (Excel) ==========
+    {
+      fecha: "2025-04-11", categorias: ["Concierto"], lugar: "Estados Unidos",
+      titulo: "Coachella 2025 (Día Uno)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "tSosB2CdcQk",
+      destacado: true
+    },
+    {
+      fecha: "2025-11-23", categorias: ["Concierto"], lugar: "Estados Unidos",
+      titulo: "CA7RIEL & PACO AMOROSO | Camp Flog Gnaw Festival 2025",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "PuLFQ1sBMFg",
+      destacado: true
+    },
+    {
+      fecha: "2025-05-01", categorias: ["Concierto"], lugar: "Estados Unidos",
+      titulo: "Miami Beach Bandshell",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "LXXJrK67T1E",
+      destacado: true
+    },
+    {
+      fecha: "2025-07-13", categorias: ["Concierto"], lugar: "Alemania",
+      titulo: "Lollapalooza Berlín",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "DfJx_lUtIvQ",
+      destacado: true
+    },
+    {
+      fecha: "2025-07-26", categorias: ["Concierto"], lugar: "Japón",
+      titulo: "Fuji Rock Japón",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "wKjQmUAUeoc",
+      destacado: true
+    },
+    {
+      fecha: "2025-08-01", categorias: ["Concierto"], lugar: "Estados Unidos",
+      titulo: "House of Blues Chicago",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      destacado: true
+    },
+    {
+      fecha: "2025-08-02", categorias: ["Concierto"], lugar: "Estados Unidos",
+      titulo: "Lollapalooza Chicago (Agregado)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "xkvldCjTwkY",
+      destacado: true
+    },
+    {
+      fecha: "2025-08-10", categorias: ["Concierto"], lugar: "Estados Unidos",
+      titulo: "Outside Lands San Francisco",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "N9TII_TzC5U",
+      destacado: true
+    },
+    {
+      fecha: "2025-08-15", categorias: ["Concierto"], lugar: "México",
+      titulo: "Palacio de los Deportes México",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "Sv-hLwiw7L8",
+      destacado: true
+    },
+    {
+      fecha: "2022-12-23", categorias: ["Concierto"], lugar: "Argentina",
+      titulo: "Estadio Obras Outdoor (Paga Dios World Tour)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "zq68YWjiD0A",
+      destacado: true
+    },
+    {
+      fecha: "2019-12-20", categorias: ["Concierto"], lugar: "Argentina",
+      titulo: "Estadio Obras Sanitarias (La Celebración)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "RUrugzFOYW8",
+      destacado: true
+    },
+    {
+      fecha: "2019-08-29", categorias: ["Concierto"], lugar: "Argentina",
+      titulo: "Niceto Club (En vivo con la ATR Band)",
+      teaser: "",
+      descripcion: "CA7RIEL, Paco Amoroso y la ATR Band en vivo en Niceto. La ATR Band son: Julián Montes (bajo), Mariano \"Yuye\" Domínguez (batería), Guido Rodríguez y Axel Introini (teclados), con Fran Alduncin como baterista invitado.",
+      foto: "", youtube: "nvEr6hA6Iak",
+      destacado: true
+    },
+    {
+      fecha: "2018-12-13", categorias: ["Concierto"], lugar: "Argentina",
+      titulo: "DAMN! Live Session III (Estudio Vorterix)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "vfIEX2c1fs0",
+      destacado: true
+    },
+
+    // ========== CARGA 2 (CSV discografia) — Eras 4, 5 y 6/7 ==========
+    // ---- ERA Cuarta (2022): El regreso más esperado. Temporada II [falta texto se agrega despues] ----
+    {
+      fecha: "2022-02-17", categorias: ["Canción"], lugar: "",
+      titulo: "LAION SHUFFLE / PAQUIRRI",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "gYMQz3jEPMU",
+      destacado: true
+    },
+    {
+      fecha: "2022-03-16", categorias: ["Canción"], lugar: "",
+      titulo: "PAGA DIOS",
+      teaser: "", descripcion: "Producción musical de Neekl. Mezcla de Nico Cotton, masterizado por Jaime Estalella. Video de Juanita, grabado en Buenos Aires.",
+      foto: "", youtube: "64r03gcbS1A",
+      destacado: true
+    },
+    {
+      fecha: "2022-03-22", categorias: ["Canción"], lugar: "",
+      titulo: "EN EL AFTER",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "JCtFjWR4W6w",
+      destacado: true
+    },
+    {
+      fecha: "2022-03-14", categorias: ["Shortfilm"], lugar: "",
+      titulo: "CA7RIEL & PACO AMOROSO - TEMPORADA ll",
+      teaser: "", descripcion: "Producido y dirigido por Pampa x Kato, con dirección creativa de Facundo Cruz.",
+      foto: "", youtube: "2ZyDsmqjj5g",
+      destacado: true
+    },
+    {
+      fecha: "2022-11-03", categorias: ["Canción"], lugar: "",
+      titulo: "Don (con Miranda!)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "bnkjvpBigVY",
+      destacado: true
+    },
+    {
+      fecha: "2022-03-23", categorias: ["Canción"], lugar: "",
+      titulo: "El Mal / Cuando Se Apague Todo (con Valdés)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "k7q5tWRs1Yc",
+      destacado: true
+    },
+    // ---- ERA Quinta (2024) : Bautismo de estudio. Baño Maria [falta texto se agrega despues] ----
+    {
+      fecha: "2024-04-18", categorias: ["Álbum"], lugar: "",
+      titulo: "BAÑO MARÍA",
+      teaser: "", descripcion: "Primer álbum de estudio de larga duración del dúo. Producción de Federico Vindver, Casta, Taiko, XAY, DVLP, Sir Nolan y Slow Mike, entre otros. Géneros: pop latino, house/EDM, trap, R&B, jazz-rock.",
+      foto: "", youtube: "iETY_1WGjiU",
+      destacado: true
+    },
+    {
+      fecha: "2024-05-01", categorias: ["Shortfilm"], lugar: "",
+      titulo: "BAÑO MARÍA",
+      teaser: "", descripcion: "El cortometraje funciona como el marco visual y narrativo del álbum: sigue a Cato y Paco a lo largo de una noche desenfrenada, psicodélica y caótica por Buenos Aires, enlazando fragmentos de temas como BABY GANGSTA, DUMBAI y LA QUE PUEDE, PUEDE. Dirigido por Brian Kazez (Pantera Film).",
+      foto: "", youtube: "j6hZv58R2tM",
+      destacado: true,
+      datos: [{etiqueta:"Fecha", valor:"Aproximada (2024 (post-abril))"}]
+    },
+    {
+      fecha: "2024-12-12", categorias: ["Concierto"], lugar: "",
+      titulo: "BAÑO MARÍA",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "gHmA1PYH5Io",
+      destacado: true
+    },
+    {
+      fecha: "2024-10-04", categorias: ["Concierto"], lugar: "Washington D.C., EE.UU.",
+      titulo: "Quiebra la Matrix: Ca7riel & Paco Amoroso - Tiny Desk Concert",
+      teaser: "La sesión que los hizo mundialmente conocidos.",
+      descripcion: "Su Tiny Desk se viraliza en redes y acumula más de 16 millones de vistas. El quiebre exacto entre Bautismo de estudio y Big Bang.",
+      foto: "", youtube: "9kqnsoY94L8",
+      icono: "bolt",
+      destacado: true,
+      bisagra: true,
+      datos: [{etiqueta:"Vistas", valor:"16M+"}, {etiqueta:"Plataforma", valor:"NPR Music"}]
+    },
+    {
+      fecha: "2025-03-06", categorias: ["Canción"], lugar: "",
+      titulo: "LA QUE PUEDE, PUEDE / DUMBAI",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "klMGDp6eeow",
+      destacado: true
+    },
+    {
+      fecha: "2025-03-06", categorias: ["EP"], lugar: "",
+      titulo: "PAPOTA",
+      teaser: "", descripcion: "EP y cortometraje audiovisual. Géneros: pop urbano, trap, electro-house, hip-hop satírico.",
+      foto: "", youtube: "8Jnrkw2Lzuw",
+      destacado: true
+    },
+    {
+      fecha: "2025-03-04", categorias: ["Shortfilm"], lugar: "",
+      titulo: "PAPOTA",
+      teaser: "", descripcion: "Comedia negra y sátira absurda sobre las presiones de la fama masiva tras el Tiny Desk y el éxito de Baño María. Sigue a Cato y Paco en una espiral de obsesión estética y \"síndrome del impostor\", intercalando los 4 tracks inéditos del EP (IMPOSTOR, #TETAS, RE FORRO y EL DÍA DEL AMIGO). Dirigido por Martín Piroyansky.",
+      foto: "", youtube: "zYc1qMe_kpc",
+      destacado: true
+    },
+    {
+      fecha: "2025-11-07", categorias: ["Canción"], lugar: "",
+      titulo: "Beto’s Horns",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "V0gKh8OA0E0",
+      destacado: true
+    },
+    // ---- ERA Sexta: Big Bang. ( 4 OCT 2024 - 2025) Estallido y expansión global. [falta texto se agrega despues] ----
+    {
+      fecha: "2026-03-19", categorias: ["Álbum"], lugar: "Argentina",
+      titulo: "FREE SPIRITS",
+      teaser: "Nuevo álbum: pánico, locura y paz espiritual.",
+      descripcion: "Presentan Free Spirits, descrito como un recorrido entre el pánico, la locura y la búsqueda de paz espiritual.",
+      foto: "", youtube: "hJrU_B8TYYY",
+      destacado: true,
+      bisagra: true,
+      datos: [{etiqueta:"Tipo", valor:"Álbum de estudio"}]
+    },
+    {
+      fecha: "2026-03-18", categorias: ["Shortfilm"], lugar: "",
+      titulo: "FREE SPIRITS",
+      teaser: "", descripcion: "Álbum de 12 canciones (~38 minutos). Géneros: rock alternativo, pop experimental, electro-funk, hip-hop satírico.",
+      foto: "", youtube: "XA-Cu4YdcpA",
+      destacado: true
+    },
+    {
+      fecha: "2026-02-06", categorias: ["Shortfilm"], lugar: "",
+      titulo: "FREE SPIRITS",
+      teaser: "", descripcion: "Cato y Paco ingresan al Free Spirits Wellness Center, una clínica de rehabilitación holística con un tratamiento de 12 pasos, en una sátira de la cultura new age y los retiros wellness de lujo. Escrito y dirigido por Ferina, con Jack Black, Sting y Anderson .Paak.",
+      foto: "", youtube: "mHDXyjGcUu0",
+      destacado: true
+    },
+
+    // ========== HITOS NUEVOS (PARA_SUBIR.xlsx) ==========
+    {
+      fecha: "2018-01-01", categorias: ["Canción"], lugar: "",
+      titulo: "A mi no",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "BAXSPW4wVM4",
+      destacado: true,
+      datos: [{etiqueta:"Discográfica", valor:"5020 Records"}]
+    },
+    {
+      fecha: "2019-03-30", categorias: ["Concierto"], lugar: "Argentina",
+      titulo: "CA7RIEL, Paco Amoroso y La ATR Vanda (Lollapalooza 2019)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "z4QLVNvUKp8",
+      destacado: true
+    },
+    {
+      fecha: "2020-02-01", categorias: ["Concierto"], lugar: "Argentina",
+      titulo: "JALA JALA en vivo (Cosquín Rock 2020)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "tCVMkvQW2Yg",
+      destacado: true
+    },
+    {
+      fecha: "2020-02-15", categorias: ["Artículo"], lugar: "España",
+      titulo: "Cara B se consolida como gran laboratorio de las músicas urbanas",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://elpais.com/ccaa/2020/02/15/catalunya/1581798564_007760.html",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"El País"}]
+    },
+    {
+      fecha: "2020-05-16", categorias: ["Canción"], lugar: "",
+      titulo: "Crimen (cover de Gustavo Cerati)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "1nXa31Y1l60",
+      destacado: true
+    },
+    {
+      fecha: "2020-09-03", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "Los secretos jamás contados de CA7RIEL",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "mKvq9D0KUCg",
+      destacado: true
+    },
+    {
+      fecha: "2020-12-23", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "CA7RIEL: \"La música que hago no tiene género\" | Caja Negra",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "0KNsY-4NB-Q",
+      destacado: true
+    },
+    {
+      fecha: "2021-11-10", categorias: ["Canción"], lugar: "",
+      titulo: "Muy bien",
+      teaser: "", descripcion: "Del álbum solista El Disko. Video producido por The Movement, producción musical de Tomy Sainz, mezcla de Nico Cotton.",
+      foto: "", youtube: "SqWnQFKh45Q",
+      destacado: true
+    },
+    {
+      fecha: "2021-01-23", categorias: ["Canción"], lugar: "",
+      titulo: "Mil horas (cover, Música Popular Argentina)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "an_c4cMgeJ0",
+      destacado: true
+    },
+    {
+      fecha: "2022-09-22", categorias: ["Canción"], lugar: "",
+      titulo: "Para afuera",
+      teaser: "", descripcion: "Producción musical de Evlay, Neekl y Tomy Sainz. Video de Pampa x Kato.",
+      foto: "", youtube: "GtEnfS2-2GU",
+      destacado: true,
+      datos: [{etiqueta:"Discográfica", valor:"5020 Records"}]
+    },
+    {
+      fecha: "2023-01-28", categorias: ["Concierto"], lugar: "Rosario, Argentina",
+      titulo: "Paga Dios World Tour — Rosario",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "yd3xy4bDmF8",
+      destacado: true
+    },
+    {
+      fecha: "2024-05-16", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "CA7RIEL y Paco Amoroso en #ParenLaMano (Vorterix)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "5jbmK06UWRo",
+      destacado: true
+    },
+    {
+      fecha: "2024-05-31", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "Paco Amoroso con Fabián Casas en Picnic Extraterrestre",
+      teaser: "", descripcion: "Con la participación especial de Esteban Lamothe.",
+      foto: "", youtube: "Pl1U9lO8Afg",
+      destacado: true
+    },
+    {
+      fecha: "2025-08-11", categorias: ["Concierto"], lugar: "San Francisco, Estados Unidos",
+      titulo: "Outside Lands Festival 2025 (Full Set)",
+      teaser: "", descripcion: "Tercer día del Festival Outside Lands 2025 en San Francisco.",
+      foto: "", youtube: "5d-OTDHQfdE",
+      destacado: true
+    },
+    {
+      fecha: "2025-10-03", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "CA7RIEL & PACO AMOROSO en OLGA con Migue Granados",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "tddWEjxNauo",
+      destacado: true
+    },
+    {
+      fecha: "2025-11-13", categorias: ["Concierto"], lugar: "Estados Unidos",
+      titulo: "Presentación en los Latin Grammy 2025",
+      teaser: "", descripcion: "Medley de El Impostor, #TETAS, La Que Puede Puede y El Día del Amigo. (Fecha aproximada — a confirmar.)",
+      foto: "", youtube: "2BRAS8vEMzg",
+      destacado: true
+    },
+    {
+      fecha: "2026-05-27", categorias: ["Concierto"], lugar: "Madrid, España",
+      titulo: "AutoCine — Madrid",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "hDrhgjOgQjo",
+      destacado: true
+    },
+    {
+      fecha: "2026-06-25", categorias: ["Concierto"], lugar: "Detroit, Estados Unidos",
+      titulo: "Live in Detroit",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "6OlCUY4QMZc",
+      destacado: true
+    },
+    {
+      fecha: "2026-04-29", categorias: ["Canción"], lugar: "",
+      titulo: "Blow My Mind (versión de Robyn)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "UEM5-0dc-TQ",
+      destacado: true
+    },
+    {
+      fecha: "2026-05-04", categorias: ["Canción"], lugar: "",
+      titulo: "BABY GANGSTA / THE FIRST TAKE (con Yu Seki y Kazuki Arai, de King Gnu)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "pbK8H3TLOjM",
+      destacado: true
+    },
+
+
+    {
+      fecha: "2019-01-24", categorias: ["Canción"], lugar: "",
+      titulo: "Piola",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "lo54JoPlUms",
+      destacado: true
+    },
+    {
+      fecha: "2026-02-13", categorias: ["Canción"], lugar: "Reino Unido / Argentina",
+      titulo: "Hasta Jesús Tuvo un Mal Día (con Sting)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "QwKuVaWdVKY",
+      destacado: true
+    },
+    {
+      fecha: "2026-03-12", categorias: ["Canción"], lugar: "Estados Unidos / Argentina",
+      titulo: "Goo Goo Ga Ga (con Jack Black)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "-e-VlkuxMg4",
+      destacado: true
+    },
+    {
+      fecha: "2026-03-19", categorias: ["Canción"], lugar: "Estados Unidos / Argentina",
+      titulo: "Ay Ay Ay (con Anderson .Paak)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "rTTZMyNe9Ro",
+      destacado: true
+    },
+    {
+      fecha: "2026-05-21", categorias: ["Canción"], lugar: "Alemania / Global",
+      titulo: "Vida Loca (A COLORS SHOW)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "S8_3kdlLWFA",
+      destacado: true
+    },
+    {
+      fecha: "2024-10-22", categorias: ["Canción"], lugar: "Estados Unidos",
+      titulo: "EL DÍA DEL AMIGO (Live on The Tonight Show Starring Jimmy Fallon)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "3vAiaASGga8",
+      destacado: true
+    },
+    {
+      fecha: "2025-07-28", categorias: ["Entrevista"], lugar: "Japón",
+      titulo: "Mini Charla y Fan Meet en Tower Records Shibuya (Tokyo)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "6qOdUr-EhP8",
+      destacado: true
+    },
+    {
+      fecha: "2025-07-25", categorias: ["Canción"], lugar: "Estados Unidos",
+      titulo: "#TETAS (Live From Vevo Studios)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "3npXUlQY84E",
+      destacado: true
+    },
+    {
+      fecha: "2025-07-31", categorias: ["Canción"], lugar: "Estados Unidos",
+      titulo: "IMPOSTOR (Live From Vevo Studios)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "90uEsJ-WL3E",
+      destacado: true
+    },
+    {
+      fecha: "2024-09-12", categorias: ["Shortfilm"], lugar: "Argentina",
+      titulo: "BAÑO MARÍA (Película En Vivo - Buenos Aires Completo)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "LXXJrK67T1E",
+      destacado: true
+    },
+
+    // ========== ARTÍCULOS (Excel 2) — sin conflicto de fecha ==========
+    {
+      fecha: "2026-05-11", categorias: ["Artículo"], lugar: "Argentina",
+      titulo: "Ca7riel & Paco Amoroso: Free Spirits zapateando en el castillo de cristal",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://lucesdelsur.substack.com/p/ca7riel-and-paco-amoroso-free-spirits",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Substack (Luces del Sur)"}]
+    },
+    {
+      fecha: "2025-10-21", categorias: ["Artículo"], lugar: "Internacional",
+      titulo: "CA7RIEL & PACO AMOROSO: El Año de la Conquista Global",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://medium.com/@lucesdelsur/ca7riel-paco-amoroso-el-a%C3%B1o-de-la-conquista-global-62e87e1b0834",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Medium (Luces del Sur)"}]
+    },
+    {
+      fecha: "2026-02-02", categorias: ["Artículo"], lugar: "Argentina",
+      titulo: "Ca7riel y Paco Amoroso: ¿Espiritualidad o control de daños?",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://medium.com/@lucesdelsur/ca7riel-y-paco-amoroso-espiritualidad-o-control-de-da%C3%B1os-8b6089d8774a",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Medium (Luces del Sur)"}]
+    },
+    {
+      fecha: "2025-11-11", categorias: ["Artículo"], lugar: "Italia",
+      titulo: "Milano: Eufóricos y desatados. Ca7riel y Paco Amoroso se coronan en su último concierto pre Latin Grammy",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://medium.com/@lucesdelsur/milano-euf%C3%B3ricos-y-desatados-4d2c71f7eda3",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Medium (Luces del Sur)"}]
+    },
+    {
+      fecha: "2026-04-05", categorias: ["Artículo"], lugar: "Argentina",
+      titulo: "CA7RIEL y Paco Amoroso: Adónde está la libertad",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://desprolijo.substack.com/p/ca7riel-y-paco-amoroso",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Substack (Desprolijo - Sebastián Chaves)"}]
+    },
+    {
+      fecha: "2025-10-01", categorias: ["Artículo"], lugar: "Argentina",
+      titulo: "The Organized Chaos of Catriel and Paco Amoroso Gives Us a Dream Night at Home",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://medium.com/@lucesdelsur/the-organized-chaos-of-catriel-and-paco-amoroso-gives-us-a-dream-night-at-home-cab872c8e2a9",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Medium (Luces del Sur)"}]
+    },
+    {
+      fecha: "2024-06-15", categorias: ["Artículo"], lugar: "Reino Unido / Global",
+      titulo: "Exiliado: The Armour of a Queer Canon (or La Que Puede, Puede)",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://jspzro.medium.com/the-armour-of-a-queer-canon-or-la-que-puede-puede-6e8f4578f332",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Medium (Jonathan Pizarro)"}, {etiqueta:"Fecha", valor:"Aproximada (mediados de 2024)"}]
+    },
+    {
+      fecha: "2025-09-06", categorias: ["Artículo"], lugar: "Argentina",
+      titulo: "Vende más ser latino y otras reflexiones después del Congreso Argentino de Musicología",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://abigailbek.substack.com/p/vende-mas-ser-latino",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Bucle (Substack de Abigail Bek)"}]
+    },
+    {
+      fecha: "2025-10-16", categorias: ["Artículo"], lugar: "Argentina",
+      titulo: "El caos organizado de Ca7riel y Paco Amoroso nos da una noche soñada en casa",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://medium.com/@lucesdelsur/el-caos-organizado-de-catriel-y-paco-amoroso-nos-da-una-noche-so%C3%B1ada-en-casa-08ad31c3e4dd",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Medium (Luces del Sur)"}]
+    },
+    {
+      fecha: "2025-11-19", categorias: ["Artículo"], lugar: "Argentina",
+      titulo: "Por Qué \"GIMME MORE\" es la Declaración de Muerte (y Renacimiento) de Ca7riel y Paco Amoroso",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://medium.com/@lucesdelsur/por-qu%C3%A9-gimme-more-es-la-declaraci%C3%B3n-de-muerte-y-renacimiento-de-ca7riel-y-paco-amoroso-2dc734c50827",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Medium (Luces del Sur)"}]
+    },
+    {
+      fecha: "2026-02-04", categorias: ["Artículo"], lugar: "EE.UU. / Argentina",
+      titulo: "Un máster en trolleo para los astros del caos: Ca7riel y Paco Amoroso",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://medium.com/@lucesdelsur/un-m%C3%A1ster-en-trolleo-para-los-astros-del-caos-ca7riel-y-paco-amoroso-23cd1fafb718",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Medium (Luces del Sur)"}]
+    },
+
+    // ========== ENTREVISTAS Y ARTÍCULOS (CSV) ==========
+    {
+      fecha: "2019-03-19", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "Paco Amoroso: \"Quiero ser el punk del futuro\"",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.pagina12.com.ar/182106-paco-amoroso-quiero-ser-el-punk-del-futuro/",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Página/12 (Suplemento NO)"}]
+    },
+    {
+      fecha: "2019-05-27", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "Ca7riel y Paco Amoroso, dos rockeros infiltrados en la escena del trap",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.lanacion.com.ar/espectaculos/ca7riel-paco-amoroso-dos-rockeros-infiltrados-escena-trap-nid2252040/",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"La Nación"}]
+    },
+    {
+      fecha: "2022-09-01", categorias: ["Entrevista"], lugar: "Chile",
+      titulo: "Hablamos con Ca7riel y Paco Amoroso: “Ni nosotros sabemos cómo definir nuestra música”",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://pousta.com/entrevista-catriel-paco/",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Pousta"}]
+    },
+    {
+      fecha: "2022-12-21", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "Ca7riel y Paco Amoroso volvieron a juntarse: por qué son el cóctel más explosivo de rap, trap y rock",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.clarin.com/espectaculos/musica/ca7riel-paco-amoroso-volvieron-juntarse-coctel-explosivo-rap-trap-rock_0_hHU3Q28BrA.html",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Clarín"}]
+    },
+    {
+      fecha: "2024-06-01", categorias: ["Entrevista"], lugar: "España",
+      titulo: "Ca7riel & Paco Amoroso - Y las aventuras del jacuzzi",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://acero.metalmagazine.eu/post/ca7riel-and-paco-amoroso",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Acero Magazine"}]
+    },
+    {
+      fecha: "2024-10-16", categorias: ["Entrevista"], lugar: "Chile",
+      titulo: "Ca7riel y Paco Amoroso, el dúo argentino que conquistó el Tiny Desk con su propuesta musical",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.latercera.com/culto/2024/10/16/ca7riel-y-paco-amoroso-el-duo-argentino-que-conquisto-el-tiny-desk-con-su-propuesta-musical/",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"La Tercera (Culto)"}]
+    },
+    {
+      fecha: "2024-12-06", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "Ca7riel & Paco Amoroso: \"Dime con quién te juntas y te diré quién eres\"",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.cronica.com.ar/elcanaldelamusica/noticias/Ca7riel-Paco-Amoroso-Dime-con-quien-te-juntas-y-te-dire-quien-eres-20241206-0021.html",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Crónica (El Canal de la Música)"}]
+    },
+    {
+      fecha: "2020-09-24", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "CA7RIEL: \"Antes de la cuarentena me estaba volviendo loco\"",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.pagina12.com.ar/291451-ca-7-riel-antes-de-la-cuarentena-me-estaba-volviendo-loco/",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Página/12 (Ca7riel)"}]
+    },
+    {
+      fecha: "2020-11-20", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "Entrevista a Ca7riel: “No confío en la gente”",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.lavoz.com.ar/vos/musica/entrevista-a-ca7riel-no-confio-en-la-gente/",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"La Voz del Interior (Ca7riel)"}]
+    },
+    {
+      fecha: "2021-11-29", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "Paco Amoroso: \"Este disco solista fue un poco como hacerme adulto\"",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.pagina12.com.ar/386250-paco-amoroso-este-disco-solista-fue-un-poco-como-hacerme-adu/",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Página/12 (Paco Amoroso)"}]
+    },
+    {
+      fecha: "2021-12-16", categorias: ["Entrevista"], lugar: "Argentina",
+      titulo: "Paco Amoroso y \"Saeta\": un tiro al blanco",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://indieclubargentina.com/paco-amoroso-y-saeta-un-tiro-al-blanco/",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Indie Club Argentina (Paco Amoroso)"}]
+    },
+    {
+      fecha: "2022-01-17", categorias: ["Entrevista"], lugar: "Uruguay",
+      titulo: "Paco Amoroso se pasa del trap al pop electrónico: \"De aquel Paquito quedó poco\"",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.elpais.com.uy/tvshow/musica/paco-amoroso-se-pasa-del-trap-al-pop-electronico-de-aquel-paquito-quedo-poco",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"El País (Paco Amoroso)"}]
+    },
+    {
+      fecha: "2025-11-01", categorias: ["Entrevista"], lugar: "Estados Unidos",
+      titulo: "CA7RIEL and Paco Amoroso on how their Tiny Desk performance changed their lives",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.youtube.com/watch?v=PHHKyX-rVu4",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Latin GRAMMYs"}]
+    },
+    {
+      fecha: "2026-02-01", categorias: ["Entrevista"], lugar: "Estados Unidos",
+      titulo: "CA7RIEL & PACO AMOROSO Interview | 2026 GRAMMYs",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.youtube.com/watch?v=VApw_ECeSoU",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Recording Academy / GRAMMYs"}]
+    },
+    {
+      fecha: "2026-02-01", categorias: ["Entrevista"], lugar: "Estados Unidos",
+      titulo: "CA7RIEL y Paco Amoroso en la Alfombra Roja de los Premios GRAMMY® 2026",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.youtube.com/watch?v=AaHRK8PYjZE",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"Premios GRAMMY® (Alfombra Roja)"}]
+    },
+    {
+      fecha: "2026-04-16", categorias: ["Entrevista"], lugar: "España",
+      titulo: "CA7RIEL y Paco Amoroso están en su absoluto peak | #LaRevuelta",
+      teaser: "", descripcion: "",
+      foto: "", youtube: "",
+      enlace: "https://www.youtube.com/watch?v=DCuKE2wC-Sw",
+      destacado: true,
+      datos: [{etiqueta:"Medio", valor:"La Revuelta (RTVE)"}]
+    },
+  ];
+
+/* =============================================================
+   3) LÓGICA — no hace falta tocar de acá para abajo
+   ============================================================= */
+  // Configuración de esta página en particular (cada página la define
+  // antes de este script, en su propio bloque <script> chico).
+  const CFG = window.PAGE_CONFIG || {};
+  const CATS_PERMITIDAS = CFG.categoriasPermitidas || Object.keys(CATEGORIAS).filter(c => c !== 'Era');
+  const SOLO_BISAGRA = !!CFG.soloBisagra;
+
+  let activeCats = new Set(CATS_PERMITIDAS);
+  function getYear(fecha){ return parseInt(fecha.slice(0,4), 10); }
+
+  const NOMBRES_MES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  function formatearFecha(iso){
+    const [y, m, d] = iso.split('-').map(Number);
+    return `${d} ${NOMBRES_MES[m-1]} ${y}`;
+  }
+
+  
+  function initFilters(){
+    const pillWrap = document.getElementById('cat-pills');
+    const clavesAMostrar = CATS_PERMITIDAS;
+    clavesAMostrar.forEach(cat => {
+      const info = CATEGORIAS[cat];
+      if(!info) return;
+      const b = document.createElement('button');
+      b.className = 'pill active';
+      b.textContent = cat;
+      b.style.setProperty('--cat-color', info.color);
+      b.style.background = info.color;
+      b.dataset.cat = cat;
+      b.addEventListener('click', () => {
+        if(activeCats.has(cat)){ activeCats.delete(cat); b.classList.remove('active'); b.style.background='transparent'; b.style.color='var(--text-dim)'; }
+        else{ activeCats.add(cat); b.classList.add('active'); b.style.background=info.color; b.style.color='var(--bg-soft)'; }
+        render();
+      });
+      pillWrap.appendChild(b);
+    });
+
+    document.getElementById('reset-filters').addEventListener('click', () => {
+      activeCats = new Set(clavesAMostrar);
+      document.querySelectorAll('.pill').forEach(b => {
+        b.classList.add('active');
+        b.style.background = CATEGORIAS[b.dataset.cat].color;
+        b.style.color = 'var(--bg-soft)';
+      });
+      render();
+    });
+  }
+
+  function cardThumb(ev){
+    if(ev.foto){
+      return `<img src="${ev.foto}" alt="${ev.titulo}">${ev.youtube ? '<div class="tl-play-badge">▶</div>' : ''}`;
+    }
+    if(ev.youtube){
+      // Sin foto propia: usamos la miniatura automática de YouTube, así no hace
+      // falta subir una imagen para que la tarjeta se vea con contenido visual.
+      return `<img src="https://img.youtube.com/vi/${ev.youtube}/hqdefault.jpg" alt="${ev.titulo}"><div class="tl-play-badge">▶</div>`;
+    }
+    return `<div class="ph">📷<br>Espacio para tu foto</div>`;
+  }
+
+  
+  function render(){
+    const wrap = document.getElementById('timeline');
+    wrap.innerHTML = '';
+
+    const erasCompletas = DATA.filter(d => d.categoria === 'Era');
+
+    let hitos = DATA
+      .filter(d => d.categoria !== 'Era')
+      .filter(d => (d.categorias || []).some(c => activeCats.has(c)));
+
+    // Esta página muestra SOLO los hitos de una Era en particular
+    if(CFG.eraSolo){
+      hitos = hitos.filter(h => {
+        const era = eraDeFecha(h.fecha, erasCompletas);
+        return era && era.titulo === CFG.eraSolo;
+      });
+    }
+
+    hitos.sort((a, b) => a.fecha.localeCompare(b.fecha));
+
+    if(hitos.length === 0){
+      wrap.innerHTML = `<div class="empty-state">No hay hitos con estos filtros.<br>Probá sumar categorías.</div>`;
+      return;
+    }
+
+    hitos.forEach((ev, i) => {
+      const delay = Math.min(i * 0.04, 0.6);
+      wrap.appendChild(renderHito(ev, delay));
+    });
+  }
+
+  // Encuentra la Era vigente de una fecha: la de fecha de inicio más reciente
+  // que sea <= la fecha dada.
+  function eraDeFecha(fecha, erasData){
+    let found = null;
+    erasData.forEach(era => { if(era.fecha <= fecha) { if(!found || era.fecha > found.fecha) found = era; } });
+    return found;
+  }
+
+  // Al hacer click en un hito, va DIRECTO al link externo (YouTube o el
+  // artículo/entrevista) en una pestaña nueva — no abre ningún modal.
+  // Solo si un hito no tiene ni video ni link (por ejemplo, un dato de
+  // contexto sin fuente propia), se muestra el modal como respaldo.
+  function irADestino(ev){
+    if(ev.youtube){ window.open(`https://www.youtube.com/watch?v=${ev.youtube}`, '_blank', 'noopener'); }
+    else if(ev.enlace){ window.open(ev.enlace, '_blank', 'noopener'); }
+    else{ openModal(ev); }
+  }
+
+  function renderHito(ev, delay){
+    const colores = catColors(ev.categorias);
+    const el = document.createElement('div');
+    el.className = 'tl-row';
+    el.style.animationDelay = `${delay}s`;
+    const catTags = (ev.categorias || []).map((c, i) =>
+      `<span class="tl-cat" style="--tag-color:${colores[i]}">${c}</span>`
+    ).join('');
+    const sinMiniatura = !ev.foto && !ev.youtube;
+    el.innerHTML = `
+      ${sinMiniatura ? '' : `<div class="tl-row-thumb">${cardThumb(ev)}</div>`}
+      <div class="tl-row-info">
+        <span class="tl-date">${formatearFecha(ev.fecha)}</span>${catTags}
+        <div class="tl-title">${ev.titulo}${ev.publico ? ` <span class="tl-publico">(${ev.publico})</span>` : ''}</div>
+        ${ev.lugar ? `<div class="tl-lugar">📍 ${ev.lugar}</div>` : ''}
+        ${ev.teaser ? `<div class="tl-teaser">${ev.teaser}</div>` : ''}
+        ${ev.enlace ? `<div class="tl-leer">Leer la nota ↗</div>` : ''}
+      </div>
+    `;
+    el.addEventListener('click', () => irADestino(ev));
+    return el;
+  }
+
+  function openModal(ev){
+    const categoriasArr = ev.categorias || (ev.categoria ? [ev.categoria] : []);
+    const colores = catColors(categoriasArr);
+    const color = colores[0] || 'var(--lime)';
+    const media = document.getElementById('modal-media');
+    const photoBox = document.getElementById('modal-photo');
+
+    // Miniatura siempre visible: prioridad a la foto propia; si no hay,
+    // usamos la miniatura automática de YouTube (funciona siempre, incluso
+    // si el video tiene restricciones de embebido). El botón "Ver en YouTube"
+    // abre el video real en una pestaña nueva — ya no se intenta embeber
+    // el reproductor adentro del modal, porque algunos videos lo bloquean
+    // (Error 153) y quedaba una pantalla negra en vez de la miniatura.
+    let imgSrc = '';
+    if(ev.foto) imgSrc = ev.foto;
+    else if(ev.youtube) imgSrc = `https://img.youtube.com/vi/${ev.youtube}/hqdefault.jpg`;
+
+    if(imgSrc){
+      media.innerHTML = `<img src="${imgSrc}" alt="${ev.titulo}">` +
+        (ev.youtube ? `<a class="modal-yt-link" href="https://www.youtube.com/watch?v=${ev.youtube}" target="_blank" rel="noopener">▶ Ver en YouTube</a>` : '');
+      media.classList.remove('hidden');
+    } else {
+      media.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--mono);">📷 Sin foto/video todavía</div>`;
+    }
+
+    photoBox.classList.add('hidden');
+    photoBox.innerHTML = '';
+
+    const catEl = document.getElementById('modal-cat');
+    catEl.innerHTML = categoriasArr.map((c, i) =>
+      `<span class="modal-cat-chip" style="background:color-mix(in srgb, ${colores[i]} 22%, transparent); color:${colores[i]}">${c}</span>`
+    ).join('');
+    document.getElementById('modal-date').textContent = ev.hasta
+      ? `${getYear(ev.fecha)} – ${getYear(ev.hasta)}`
+      : formatearFecha(ev.fecha);
+    document.getElementById('modal-title').textContent = ev.titulo + (ev.publico ? ` (${ev.publico})` : '');
+    document.getElementById('modal-desc').textContent = ev.descripcion || '';
+    document.getElementById('modal-desc').style.display = ev.descripcion ? '' : 'none';
+
+    const datosChips = (ev.datos || []).map(d => `<div class="data-chip">${d.etiqueta}: <b>${d.valor}</b></div>`);
+    if(ev.lugar) datosChips.unshift(`<div class="data-chip">📍 <b>${ev.lugar}</b></div>`);
+    document.getElementById('modal-data').innerHTML = datosChips.join('');
+
+    document.getElementById('modal-overlay').classList.add('open');
+  }
+  function closeModal(){ document.getElementById('modal-overlay').classList.remove('open'); }
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-overlay').addEventListener('click', e => { if(e.target.id === 'modal-overlay') closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+  // Completa el encabezado (título, período, foto, texto) leyendo el objeto
+  // Era correspondiente directamente de DATA, así el texto vive en un solo
+  // lugar (el array DATA) y no se duplica en el HTML.
+  function pintarEncabezadoEra(){
+    const eras = DATA.filter(d => d.categoria === 'Era').sort((a,b) => a.fecha.localeCompare(b.fecha));
+    const idx = eras.findIndex(e => e.titulo === CFG.eraSolo);
+    if(idx === -1) return;
+    const era = eras[idx];
+
+    if(CFG.colorEra){
+      const hero = document.querySelector('.hero');
+      hero.style.setProperty('--hero-bg', CFG.colorEra);
+      hero.style.setProperty('--hero-fg', CFG.colorEraTexto || '#111111');
+    }
+
+    document.getElementById('era-eyebrow').textContent = `ERA ${idx + 1}/7`;
+    document.getElementById('era-titulo').textContent = era.titulo.toUpperCase();
+    document.getElementById('era-shows').textContent = CFG.showsAcumulados || '—';
+    const rango = era.hasta && getYear(era.fecha) !== getYear(era.hasta)
+      ? `${getYear(era.fecha)}–${getYear(era.hasta)}` : `${getYear(era.fecha)}`;
+    document.getElementById('era-periodo').textContent = `${rango} · ${era.teaser || ''}`;
+
+    // El bloque de foto(s) + texto se arma acá: si "era.fotos" tiene 2 fotos,
+    // van en fila arriba y el texto ocupa el ancho completo debajo. Si solo
+    // hay "era.foto" (una sola), se mantiene el layout de siempre (foto al
+    // costado del texto).
+    const bloque = document.getElementById('era-bloque');
+    const listaFotos = (era.fotos && era.fotos.length) ? era.fotos : (era.foto ? [era.foto] : []);
+    const textoHTML = era.descripcion || '';
+
+    if(listaFotos.length >= 2){
+      bloque.className = 'era-bloque era-bloque-doble';
+      bloque.innerHTML = `
+        <div class="era-fotos-fila">
+          ${listaFotos.slice(0,2).map(f => `<div class="era-foto"><img src="${f}" alt="${era.titulo}"></div>`).join('')}
+        </div>
+        <div class="era-texto">${textoHTML}</div>
+      `;
+    } else {
+      bloque.className = 'era-bloque';
+      bloque.innerHTML = `
+        <div class="era-foto">${listaFotos[0] ? `<img src="${listaFotos[0]}" alt="${era.titulo}">` : 'Sin foto todavía'}</div>
+        <div class="era-texto">${textoHTML}</div>
+      `;
+    }
+
+    const prevA = document.getElementById('era-prev');
+    const nextA = document.getElementById('era-next');
+    const prevB = document.getElementById('era-prev-bottom');
+    const nextB = document.getElementById('era-next-bottom');
+    if(idx > 0){
+      prevA.href = CFG.hrefEras[idx-1]; prevA.textContent = `◀ ${eras[idx-1].titulo}`;
+      prevB.href = CFG.hrefEras[idx-1]; prevB.textContent = `◀ ${eras[idx-1].titulo}`;
+    } else {
+      prevA.classList.add('vacio'); prevB.classList.add('vacio');
+    }
+    if(idx < eras.length - 1){
+      nextA.href = CFG.hrefEras[idx+1]; nextA.textContent = `${eras[idx+1].titulo} ▶`;
+      nextB.href = CFG.hrefEras[idx+1]; nextB.textContent = `${eras[idx+1].titulo} ▶`;
+    } else {
+      nextA.classList.add('vacio'); nextB.classList.add('vacio');
+    }
+
+    document.title = `${era.titulo} — Universo Musical CA7RIEL & Paco Amoroso`;
+  }
+
+  /* ---------- Init ---------- */
+  pintarEncabezadoEra();
+  initFilters();
+  render();
+
+  /* ---------- Footer: fecha de última actualización (automática) ---------- */
+  (function setLastUpdate(){
+    const el = document.getElementById('last-update');
+    if(!el) return;
+    const d = new Date(document.lastModified);
+    if(isNaN(d.getTime())){ el.textContent = 'sin datos'; return; }
+    el.textContent = d.toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric' });
+  })();
+</script>
+</body>
+</html>
