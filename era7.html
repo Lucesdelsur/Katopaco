@@ -250,7 +250,7 @@ select{
 
 /* ---- Tarjeta "cita": para hitos sin foto ni video (Prensa, en su mayoría) ---- */
 .tl-card.cita{
-  aspect-ratio:3/2; background:color-mix(in srgb, var(--hero-bg, var(--red)) 8%, transparent);
+  min-height:180px; background:color-mix(in srgb, var(--hero-bg, var(--red)) 8%, transparent);
   display:flex; flex-direction:column; justify-content:center; padding:16px; margin-top:0;
 }
 .tl-card.cita .tl-teaser-grande{
