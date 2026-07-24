@@ -82,6 +82,14 @@ git push -u origin main
 
 ---
 
+## Cómo verificar el favicon, Open Graph y SEO
+
+Estas tres cosas no se ven "dentro" del sitio en sí — se ven en lugares específicos:
+
+- **Favicon**: mirá la pestaña del navegador cuando tenés el sitio abierto — debería verse un cuadradito rojo con un "7" blanco, en vez del ícono genérico. En el celular, se ve en la pestaña del navegador y si guardás el sitio como acceso directo/marcador.
+- **Open Graph** (cómo se ve el link al compartirlo): la forma más directa es pegar el link real de tu sitio (una vez subido) en una herramienta como **[opengraph.xyz](https://www.opengraph.xyz/)** o el **[Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/)** — ahí ves exactamente la tarjetita (foto + título + descripción) que va a aparecer cuando alguien pegue tu link en WhatsApp, Twitter/X o redes. Ojo: a veces estas plataformas guardan una versión vieja en caché — si cambiás la imagen más adelante, puede tardar en actualizarse ahí, aunque tu sitio ya esté actualizado.
+- **SEO**: no se ve de forma inmediata (Google tarda en indexar sitios nuevos, puede llevar días o semanas). Podés confirmar que el código está bien mirando el "código fuente" de la página en el navegador (click derecho → "Ver código fuente de la página") y buscando la línea `<meta name="description"...`.
+
 ## Roadmap y decisiones tomadas
 
 Esta sección es un registro de qué se decidió dejar para más adelante, y por qué — para no perder el hilo entre sesiones de trabajo.
