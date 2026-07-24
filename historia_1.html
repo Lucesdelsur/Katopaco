@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Historia — Universo Musical CA7RIEL & Paco Amoroso</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Una maestra los confundió por hermanos el primer día de clase. La historia real detrás de CA7RIEL & Paco Amoroso.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Universo Musical — CA7RIEL & Paco Amoroso">
+<meta property="og:title" content="Ca7riel y Paco Amoroso: escapando de las categorías — Universo Musical">
+<meta property="og:description" content="Una maestra los confundió por hermanos el primer día de clase. La historia real detrás de CA7RIEL & Paco Amoroso.">
+<meta property="og:image" content="https://lucesdelsur.github.io/Universo/images/portada-principal.jpeg">
+<meta property="og:url" content="https://lucesdelsur.github.io/Universo/historia.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ca7riel y Paco Amoroso: escapando de las categorías — Universo Musical">
+<meta name="twitter:description" content="Una maestra los confundió por hermanos el primer día de clase. La historia real detrás de CA7RIEL & Paco Amoroso.">
+<meta name="twitter:image" content="https://lucesdelsur.github.io/Universo/images/portada-principal.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,600&family=Merriweather:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =============================================================
+   UNIVERSO MUSICAL — CA7RIEL & Paco Amoroso
+   Estética editorial (Rolling Stone) — blanco, serif, rojo quirúrgico
+   ============================================================= */
+:root{
+  --bg: #FFFFFF;
+  --bg-soft: #FAFAFA;
+  --card: #FFFFFF;
+  --card-hover: #F5F5F5;
+  --line: #E0E0E0;
+  --text: #111111;
+  --text-dim: #555555;
+
+  --red: #D71920;
+  --ink: #111111;
+
+  /* Todas las categorías comparten el mismo rojo editorial (a propósito:
+     el sistema Rolling Stone no codifica temas por color, usa el rojo
+     como acento único y consistente para cualquier etiqueta). */
+  --lime: #D71920;
+  --magenta: #D71920;
+  --cyan: #D71920;
+  --orange: #D71920;
+  --violet: #D71920;
+  --gold: #D71920;
+  --gray: #555555;
+
+  --display: 'Merriweather', serif;
+  --body: 'Lora', serif;
+  --mono: 'Inter', sans-serif;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  font-size:17px;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+::selection{ background:var(--red); color:#fff; }
+a{ color:inherit; }
+button{ font-family:inherit; cursor:pointer; }
+:focus-visible{ outline:2px solid var(--red); outline-offset:2px; }
+
+/* =========================================================
+   NAV superior — sticky, blanco, logo centrado
+   ========================================================= */
+#site-nav{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:center; gap:30px;
+  background:#fff; border-bottom:1px solid var(--line);
+  padding:14px 20px;
+}
+#site-nav a{
+  font-family:var(--mono); font-weight:600; font-size:.85rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink); text-decoration:none;
+  padding-bottom:4px; border-bottom:2px solid transparent;
+}
+#site-nav a:hover{ color:var(--red); }
+#site-nav a.active{ border-bottom-color:var(--red); color:var(--red); }
+
+/* =========================================================
+   HERO — color sólido por Era (o foto, cuando la tengamos)
+   ========================================================= */
+.hero{
+  position:relative;
+  min-height:46vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:56px 24px 44px;
+  background:var(--hero-bg, #fff);
+  color:var(--hero-fg, var(--ink));
+}
+.hero-eyebrow{
+  font-family:var(--mono); font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--hero-fg, var(--ink)); font-size:.85rem; opacity:.85;
+}
+.hero .kicker{
+  font-family:var(--mono); font-weight:700; font-size:.85rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--red); background:#fff; display:inline-block;
+  padding:5px 12px; margin-top:16px;
+}
+.hero h1{
+  font-family:var(--display);
+  font-weight:900;
+  font-size:clamp(2.2rem, 8vw, 4.4rem);
+  line-height:1.1;
+  color:var(--hero-fg, var(--ink));
+  margin-top:14px;
+}
+.hero h1 span{ display:block; }
+.hero h1.titulo-eras{ font-size:clamp(2.4rem, 8vw, 4.6rem); }
+.hero p.sub{
+  max-width:640px; margin-top:16px; color:var(--hero-fg, var(--text-dim)); font-size:1.2rem;
+  font-style:italic; font-family:var(--body); opacity:.9;
+}
+.hero-divider{
+  width:60px; height:2px; background:var(--red); border:none; margin:22px auto 4px;
+}
+.contador-shows{
+  margin-top:22px; display:inline-block;
+  font-family:var(--mono); font-size:1.05rem; font-weight:600;
+  background:#fff; color:var(--ink); border:1px solid var(--line);
+  padding:10px 18px;
+}
+.contador-shows strong{ color:var(--red); }
+.hero .stats{
+  display:flex; gap:44px; margin-top:30px; flex-wrap:wrap; justify-content:center;
+}
+.hero .stats div{ font-family:var(--mono); text-align:center; }
+.hero .stats strong{ display:block; font-family:var(--display); font-weight:900; font-size:1.9rem; color:var(--hero-fg, var(--ink)); }
+.hero .stats span{ font-size:.8rem; color:var(--hero-fg, var(--text-dim)); text-transform:uppercase; letter-spacing:.1em; opacity:.85; }
+.stats-source{
+  font-family:var(--mono); font-size:.85rem; color:var(--hero-fg, var(--text-dim));
+  opacity:.7; margin-top:14px;
+}
+
+/* =========================================================
+   Bloque foto + texto de la Era
+   ========================================================= */
+.era-bloque{
+  max-width:960px; margin:48px auto; padding:0 24px;
+  display:flex; gap:32px; flex-wrap:wrap; align-items:flex-start;
+}
+.era-foto{
+  width:320px; aspect-ratio:3/2; flex-shrink:0;
+  background:var(--bg-soft); border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:.85rem; color:var(--text-dim); text-align:center; padding:16px;
+}
+.era-foto img{ width:100%; height:100%; object-fit:cover; }
+.era-texto{ flex:1; min-width:280px; font-size:1.15rem; line-height:1.8; color:var(--text); font-family:var(--body); }
+
+/* =========================================================
+   Navegación Era anterior / siguiente / inicio
+   ========================================================= */
+.era-prevnext{
+  max-width:960px; margin:0 auto 20px; padding:0 24px;
+  display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.era-prevnext a{
+  font-family:var(--mono); font-weight:600; font-size:.9rem; color:var(--ink); text-decoration:none;
+  border:1px solid var(--line); padding:10px 18px; text-transform:uppercase; letter-spacing:.04em;
+}
+.era-prevnext a:hover{ border-color:var(--red); color:var(--red); }
+.era-prevnext .vacio{ visibility:hidden; }
+.era-prevnext-bottom{ margin:60px auto 30px; padding-top:30px; border-top:1px solid var(--line); }
+.era-prevnext-bottom .volver-inicio{
+  color:var(--red); border-color:var(--red); font-weight:700;
+}
+
+/* =========================================================
+   FILTROS
+   ========================================================= */
+#filterbar{
+  position:sticky; top:53px; z-index:40;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);
+  padding:14px 20px;
+  display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:center;
+}
+.filter-group{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:center; }
+.filter-label{
+  font-family:var(--mono); font-size:.8rem; text-transform:uppercase; letter-spacing:.1em;
+  color:var(--text-dim); margin-right:4px;
+}
+.pill{
+  font-family:var(--mono); font-weight:600; font-size:.85rem;
+  background:transparent; color:var(--text-dim);
+  border:1px solid var(--line); border-radius:100px;
+  padding:7px 16px; transition:all .15s ease;
+}
+.pill:hover{ border-color:var(--red); color:var(--red); }
+.pill.active{ color:#fff; background:var(--red); border-color:var(--red); font-weight:700; }
+select{
+  font-family:var(--mono); background:#fff; color:var(--text);
+  border:1px solid var(--line); border-radius:4px; padding:7px 10px; font-size:.9rem;
+}
+#reset-filters{
+  font-family:var(--mono); font-size:.8rem; color:var(--text-dim);
+  background:none; border:1px dashed var(--line); border-radius:4px; padding:6px 12px;
+}
+#reset-filters:hover{ color:var(--red); border-color:var(--red); }
+
+/* =========================================================
+   LÍNEA DE TIEMPO
+   ========================================================= */
+#timeline-wrap{ position:relative; max-width:1000px; margin:56px auto 100px; padding:0 24px; }
+#spine{ position:absolute; left:50%; top:0; transform:translateX(-50%); width:2px; z-index:1; background:var(--line); height:100%; }
+.spine-segment{ display:none; } /* el color por Era ya no aplica: fondo sólido por página */
+.empty-state{ text-align:center; padding:80px 20px; color:var(--text-dim); font-family:var(--mono); }
+
+/* Marcadores: simples, planos, sin sombras — el rojo es el único acento */
+.spine-marker{
+  position:absolute; left:50%; transform:translate(-50%,-50%);
+  width:11px; height:11px; background:var(--red); z-index:2;
+}
+.spine-marker-heart{ width:15px; height:15px; background:var(--ink); }
+.spine-marker-bolt{ width:15px; height:15px; background:var(--ink); }
+
+.tl-item{
+  position:relative; width:44%; z-index:1; margin-bottom:60px;
+  opacity:0; transform:translateY(20px);
+  animation:riseIn .5s ease forwards;
+}
+@keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
+.tl-item.side-l{ left:0; text-align:right; }
+.tl-item.side-r{ left:56%; text-align:left; }
+
+.tl-connector{
+  position:absolute; top:50%; height:1px; width:40px; background:var(--line); z-index:0;
+}
+.tl-item.side-l .tl-connector{ right:-40px; }
+.tl-item.side-r .tl-connector{ left:-40px; }
+
+.tl-card{
+  display:inline-block; text-align:left; width:100%;
+  background:var(--card); border-top:1px solid var(--line);
+  padding:22px 0 0; cursor:pointer; transition:opacity .15s ease;
+}
+.tl-card:hover{ opacity:.72; }
+.tl-date{ font-family:var(--mono); font-size:.8rem; color:var(--text-dim); letter-spacing:.03em; }
+.tl-cat{
+  display:inline-block; font-family:var(--mono); font-size:.72rem; text-transform:uppercase;
+  letter-spacing:.1em; margin-left:10px; color:var(--tag-color, var(--red)); font-weight:700;
+}
+.tl-title{ font-family:var(--display); font-weight:900; font-size:1.5rem; line-height:1.3; margin-top:10px; color:var(--ink); }
+.tl-thumb{
+  position:relative; margin-top:14px; width:100%; aspect-ratio:3/2; overflow:hidden;
+  background:var(--bg-soft); display:flex; align-items:center; justify-content:center;
+}
+.tl-thumb img{ width:100%; height:100%; object-fit:cover; }
+.tl-thumb .ph{ font-family:var(--mono); font-size:.9rem; color:var(--text-dim); text-align:center; padding:8px; }
+.tl-play-badge{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:46px; height:46px; border-radius:50%;
+  background:rgba(255,255,255,.9); color:var(--red);
+  display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+  border:1.5px solid var(--red);
+}
+.tl-lugar{ margin-top:8px; font-family:var(--mono); font-size:.85rem; color:var(--text-dim); }
+.tl-teaser{ margin-top:12px; font-size:1.05rem; color:var(--text-dim); line-height:1.6; font-family:var(--body); font-style:italic; }
+.tl-publico{ font-weight:400; color:var(--text-dim); font-size:.85em; }
+
+@media (max-width: 760px){
+  #spine{ left:20px; transform:none; }
+  .tl-item{ width:calc(100% - 60px); left:60px !important; text-align:left; }
+  .tl-connector{ left:-40px; right:auto; }
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+#modal-overlay{
+  position:fixed; inset:0; background:rgba(17,17,17,.75); backdrop-filter:blur(2px);
+  z-index:200; display:flex; align-items:center; justify-content:center; padding:20px;
+  opacity:0; visibility:hidden; transition:opacity .2s ease, visibility .2s ease;
+}
+#modal-overlay.open{ opacity:1; visibility:visible; }
+#modal{
+  background:#fff; border:1px solid var(--line);
+  max-width:640px; width:100%; max-height:88vh; overflow-y:auto;
+  padding:32px; position:relative;
+  transform:scale(.97); transition:transform .2s ease;
+}
+#modal-overlay.open #modal{ transform:scale(1); }
+#modal-close{
+  position:absolute; top:18px; right:18px; background:#fff; border:1px solid var(--line);
+  color:var(--ink); width:34px; height:34px; border-radius:50%; font-size:1rem; z-index:2;
+}
+#modal-close:hover{ background:var(--red); color:#fff; border-color:var(--red); }
+#modal-media{ width:100%; margin-bottom:16px; background:#000; aspect-ratio:16/9; }
+#modal-media img{ width:100%; height:100%; object-fit:cover; }
+#modal-media iframe{ width:100%; height:100%; border:none; }
+#modal-photo{
+  width:100%; aspect-ratio:16/9; overflow:hidden; margin-bottom:18px;
+  background:var(--bg-soft); display:flex; align-items:center; justify-content:center;
+}
+#modal-photo img{ width:100%; height:100%; object-fit:cover; }
+#modal-photo.hidden{ display:none; }
+.modal-cat-row{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px; }
+.modal-cat-chip{
+  font-family:var(--mono); font-weight:700; font-size:.75rem; text-transform:uppercase; letter-spacing:.1em;
+  color:var(--red); display:inline-block;
+}
+.jefe-final{
+  font-family:var(--mono); font-weight:700; font-size:.8rem; text-transform:uppercase; letter-spacing:.1em;
+  color:#fff; background:var(--ink); display:inline-block; padding:5px 12px; margin-bottom:10px;
+}
+#modal-date{ font-family:var(--mono); font-size:.9rem; color:var(--text-dim); margin-bottom:6px; }
+#modal-title{ font-family:var(--display); font-weight:900; font-size:1.8rem; line-height:1.25; margin-bottom:14px; color:var(--ink); }
+#modal-desc{ color:var(--text); line-height:1.75; font-size:1.1rem; margin-bottom:18px; font-family:var(--body); }
+#modal-data{ display:flex; flex-wrap:wrap; gap:10px; }
+.data-chip{
+  font-family:var(--mono); font-size:.85rem; background:var(--bg-soft);
+  border:1px solid var(--line); padding:8px 12px;
+}
+.data-chip b{ color:var(--red); }
+.modal-yt-link{
+  width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-weight:600; font-size:1rem; color:#fff;
+  text-decoration:none; background:var(--ink); border:1px solid var(--ink);
+}
+.modal-yt-link:hover{ background:var(--red); border-color:var(--red); }
+
+footer{
+  text-align:center; padding:40px 20px 60px; color:var(--text-dim); font-family:var(--mono); font-size:.9rem;
+  border-top:1px solid var(--line);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}
+
+</style>
+<style>
+  .articulo{ max-width:720px; margin:0 auto; padding:50px 24px 0; }
+
+  .sobre-autor{
+    max-width:720px; margin:0 auto; padding:40px 24px 60px;
+    border-top:1px solid var(--line);
+  }
+  .sobre-autor h3{
+    font-family:var(--display); font-weight:900; font-size:1.1rem;
+    text-transform:uppercase; letter-spacing:.04em; margin-bottom:14px;
+  }
+  .sobre-autor p{
+    font-family:var(--body); font-size:1rem; line-height:1.75; color:var(--text-dim);
+  }
+
+  .elegi-era{
+    max-width:760px; margin:0 auto; padding:20px 24px 70px; text-align:center;
+  }
+  .elegi-era h3{
+    font-family:var(--display); font-weight:900; font-size:1.5rem; margin-bottom:26px;
+  }
+  .elegi-era-botones{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+  .elegi-era-botones a{
+    font-family:var(--mono); font-weight:700; font-size:.85rem; letter-spacing:.03em;
+    text-transform:uppercase; color:var(--ink); text-decoration:none;
+    border:1.5px solid var(--line); padding:12px 20px; transition:all .15s ease;
+  }
+  .elegi-era-botones a:hover{ border-color:var(--red); color:var(--red); }
+  .articulo .kicker{
+    font-family:var(--mono); font-weight:700; font-size:.85rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--red); display:block; margin-bottom:14px;
+  }
+  .articulo h1{
+    font-family:var(--display); font-weight:900; font-size:clamp(2rem, 6vw, 3.2rem);
+    line-height:1.15; color:var(--ink);
+  }
+  .articulo .dek{
+    font-family:var(--body); font-style:italic; font-size:1.3rem; color:var(--text-dim);
+    margin-top:18px; line-height:1.5;
+  }
+  .articulo .byline{
+    font-family:var(--mono); font-size:.85rem; color:var(--text-dim); margin-top:20px;
+    padding-bottom:24px; border-bottom:1px solid var(--line); text-transform:uppercase; letter-spacing:.05em;
+  }
+  .articulo .hero-img{
+    width:100%; aspect-ratio:3/2; margin-top:30px; background:var(--bg-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:.9rem; color:var(--text-dim);
+  }
+  .articulo .cuerpo{
+    margin-top:36px; font-family:var(--body); font-size:1.2rem; line-height:1.85; color:var(--text);
+    text-align:justify;
+  }
+  .articulo .foto-intercalada{ margin:36px 0; }
+  .articulo .foto-intercalada img{ width:100%; display:block; }
+  .articulo .foto-intercalada .pie{
+    font-family:var(--mono); font-size:.8rem; color:var(--text-dim); margin-top:8px; text-align:left;
+  }
+  .articulo .cuerpo p{ margin-bottom:24px; }
+  .articulo .cuerpo p.primera::first-letter{
+    font-family:var(--display); font-weight:900; font-size:4.5rem; float:left;
+    line-height:.85; margin:6px 10px 0 0; color:var(--red);
+  }
+  .pull-quote{
+    font-family:var(--display); font-weight:700; font-style:italic; font-size:1.6rem;
+    color:var(--ink); border-left:3px solid var(--red); padding-left:24px;
+    margin:36px 0; line-height:1.4;
+  }
+  .soon-badge{
+    display:inline-block; font-family:var(--mono); font-size:.8rem; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--red); border:1px dashed var(--red);
+    padding:6px 14px; margin-bottom:20px;
+  }
+</style>
+</head>
+<body>
+
+  <nav id="site-nav">
+    <a href="index.html">Inicio</a>
+    <a href="historia.html" class="active">Historia</a>
+    <a href="mapa.html">Mapa</a>
+  </nav>
+
+  <article class="articulo">
+    <span class="kicker">Feature · Breve Historia</span>
+    <h1>Ca7riel y Paco Amoroso: escapando de las categorías mientras hackean la industria desde dentro</h1>
+    <p class="dek">Una maestra los confundió por hermanos el primer día de clase. Treinta años después, el mundo entero los sigue confundiendo con los personajes que ellos mismos inventaron.</p>
+    <div class="byline">Por Luces del Sur</div>
+
+    <div class="cuerpo">
+      <p class="primera">La historia que ellos cuentan una y otra vez desde hace un par de años en cada entrevista es esta: se conocieron el primer día de primaria, su maestra los confunde por tener apellidos parecidos y les pregunta si son hermanos. Ellos dicen que sí, luego sus mamás se hicieron amigas, y así pasaron toda la primaria a diario juntos por la mañana en la escuela por la tarde en la casa de Catriel, con su papá que tocaba la viola, mientras cocinaba fideos.</p>
+
+      <p>Ulises aprendía a tocar el violín y Catriel la guitarra. Dos amigos con formación musical distinta, uno un virtuoso, otro un estratega ambicioso. La inteligencia de ambos es musical y escénica. Comparten además, la ambición y el hambre de fama. Empezaron desde abajo, y hackearon la escena desde adentro. Dos músicos que saben de música, con el sentido del humor ácido e irónico a flor de piel, una energía magnética en el escenario y esa necesidad de no instalarse en ninguna categoría y reinventarse cada vez.</p>
+
+      <p>Todo arranca en el under allá por el 2012, con una banda de rock llamada Astor y las Flores de Marte, tocando entre amigos. Catriel quería armar una banda, lo hizo con sus amigos de la secundaria la reconocida escuela de formación musical de Buenos Aires "el ESNA"; como un Hogwarts pero de música dirá alguna vez Cato. Él quería tocar con amigos, así que llamó a Uli que estudia en el Carlos Pellegrini. En la banda Ulises tocaba la batería: "al principio era malardo", dijo una vez Cato; Paco admite que era "cumplidor".</p>
+
+      <div class="foto-intercalada">
+        <img src="images/historia-retrato-temprano.jpg" alt="CA7RIEL y Paco Amoroso, retrato de los primeros años">
+        <div class="pie">Foto: prensa / CA7RIEL &amp; Paco Amoroso</div>
+      </div>
+
+      <p>Tocaron con Astor 7 años, grabaron un solo disco. Mientras Catriel daba clases de música, era sesionista, tocaban en el andén de la estación Retiro. Paco tenía trabajos precarios, repartidor del correo, o el pibe que tira humo en las fiestas con esas maquinitas negras. Mientras ensayaban, iban con sus instrumentos a dónde dé para tocar.</p>
+
+      <p>Parece que la vida de Ulises va de accidente en accidente, y así fue cuando tenía la mano enyesada y no podía tocar la batería que un buen día decidió comenzar a cantar, tenía 24 años. Por ese tiempo Catriel tocaba y cantaba en escenarios chiquitos, pero con actitud de los grandes. Ulises conocía todas sus canciones. Cuenta la leyenda que la primera vez que Ulises (Paco como todos los conocemos, pero era Ulises, Uli) se subió a un escenario a cantar y gritar. Se prendieron fuego.</p>
+
+      <p>Para cuando llegó el 2018 ambos vivían en el mismo edificio en La Boca, viajando en subte, tren, colectivo y con muy poco dinero en el bolsillo. Decidieron entonces que si lo mejor que sabían hacer era música y necesitaban dinero, entonces podían vender música. Tenían la destreza, tenían el conocimiento, tienen el desparpajo, con su formación de conservatorio se infiltraron en la escena del trap, vestidos con estética glitch y caótica. Ni ellos mismos se imaginaron lo que vendría después.</p>
+
+      <p class="pull-quote">Con su formación de conservatorio se infiltraron en la escena del trap, vestidos con estética glitch y caótica.</p>
+
+      <p>No sabemos cuando se comenzó a crear el personaje de Paco Amoroso, posiblemente desde la primera vez que subió al escenario. Ulises eligió el nombre porque quería destacarse, no quería un nombre corto, quería algo compuesto. Para ese tiempo Catriel ya tenía hace tiempo su alter ego CA7RIEL, su nombre de rapero. Hoy el mundo los conoce como CA7RIEL y Paco Amoroso; ya no distinguimos a la persona del personaje, puede que a ellos a veces también les cueste.</p>
+
+      <p>Nace el mito, juntos escriben PIOLA, A MI NO y JALA JALA, Ca7riel sacó POVRE y LIVRE todo en 2018. Empezaron de 7 y fueron hasta 100, hasta 1000. 2018 y 2019 dos años intensos donde se fue corriendo de boca en boca que había dos pibes de Buenos Aires que la sacaban del estadio. Juntos fueron dinamita, su química hizo que en un año agoten 5 Nicetos; en 2019 se consagraron en un emblemático escenario de Buenos Aires: el Estadio Obras, conocido como el templo del Rock. Talento real, envuelto en una provocación que nadie sabía si tomarse en serio, que nadie podía dejar de mirar.</p>
+
+      <p>En esta época estos amigos se juntan con otros amigos, porque desde temprano comprenden que esa es su mejor sinergia. Tocan con ATR Band, compuesta por Axel Introini (teclados), Julián Montes (bajo), Yuye Domínguez (batería) y Dogui Rodríguez (teclados). Llamados los ases del sonido de Ca7riel y Paco Amoroso por Página/12 en 2019.</p>
+
+      <p class="pull-quote">No inventaron un género nuevo: hackearon todos los existentes.</p>
+
+      <p>La pandemia corta la racha cuando más impulso tienen, justo antes de chocar o de que se quemen. La fama les empieza a jugar malas pasadas. Deciden separarse por un tiempo, era una relación un poco tóxica dirán al pasar en alguna entrevista. Y en ese rato cada uno se va a hacer su purga personal. Catriel graba EL DISKO, Paco graba SAETA. Exploran nuevos ritmos, se exploran a sí mismos en soledad. Les va bien, la prensa los llena de halagos, los discos son aciertos musicales en diferentes sentidos. Pero faltaba algo de esa química magnética inexplicable que hace que la prensa los llene de adjetivos y los tenga en la mira y que los números de giras y tickets vendidos hablen por sí mismos. Separados tocaron, no hicieron giras.</p>
+
+      <p>Vuelven a juntarse y denominan su vuelta: Temporada II, una decisión estratégica: la bestia que armaron juntos, como dicen ellos mismos, camina sola y tiene hambre propia. Querían comerse el mundo. En 2022 hicieron la gira PAGA DIOS, tocaron en Alemania, España, Paraguay además de en su natal Argentina. El monstruo estaba corriendo. Terminó el 2023 y pasaron varios meses hasta su vuelta.</p>
+
+      <p>Con BAÑO MARIA, el monstruo que crearon vuela. La ironía deja de ser un chiste de dos amigos y se convierte en modelo de negocio. Firman con Sony y 5020 Records, graban en Miami con productores y colaboradores de primer nivel: Vibarco, Gino Borri, Manuel Lorente Freire, Kaylee Ameri, Federico Vindver, entre otros. Rafa Arcaute, presidente del sello 5020 Records, es el arquitecto del proyecto. En esta etapa cambian de banda: los acompaña ahora otro grupo de amigos, la UATS, compuesta por Javier Burin (teclados y sintetizadores), Edu Giardina (batería), Felipe "Tío la Bomba" Brandy (bajo) y Mayi Sayes (percusión). Se suma también Anita B Queen, que está con ellos en el primer gran concierto de esta era, el Movistar Arena de Buenos Aires en 2024.</p>
+
+      <p class="pull-quote">La ironía deja de ser un chiste de dos amigos y se convierte en modelo de negocio.</p>
+
+      <p>El bait más recordado de esa etapa fue bañarse literalmente en un jacuzzi arriba de un escenario de festival, comiendo un barco gigante de sushi, frente a miles de personas, sin tocar un instrumento ni cantar, mientras Anita B Queen —la DJ— toca el disco completo. Funciona exactamente como estaba planeado: genera indignación, viralidad, y termina devolviéndoles más atención de la que hubiera dado un show convencional. La ironía, a esta altura, ya es la estrategia.</p>
+
+      <p class="pull-quote">El bait funciona exactamente como estaba planeado: genera indignación, viralidad y termina devolviéndoles más atención de la que hubiera dado un show convencional.</p>
+
+      <div class="foto-intercalada">
+        <img src="images/historia-picnic.webp" alt="CA7RIEL y Paco Amoroso brindando">
+        <div class="pie">Foto: prensa / CA7RIEL &amp; Paco Amoroso</div>
+      </div>
+
+      <p>Lo que nadie tenía calculado y explotó las métricas fue el Tiny Desk, que alcanzó 30 millones de reproducciones en menos de un mes. La sesión acústica en una sola toma para NPR hace algo que se esperaba —darles reconocimiento global— pero en proporciones astronómicas, logrando encandilar hasta al público más exigente. Ese único video dispara todo lo demás: las entradas a los conciertos se comienzan a agotar, los empiezan a llamar desde diferentes lugares, y en medio de la adrenalina nace PAPOTA — un disco y un short film lanzado en tiempo récord, irónico y mordaz sobre la fama y la industria, que se comió la gira de BAÑO MARIA y dio lugar, sin solución de continuidad ni respiro, a la gira mundial de PAPOTA. Se estaban comiendo la industria desde adentro y quedaron pipones. En menos de 6 meses pasaron de tocar en una sala de 1.500 personas en Madrid a llenar una Arena con 15.000 personas en la misma ciudad. En México tocaron para 19.000 personas en el Palacio de los Deportes.</p>
+
+      <p class="pull-quote">Se estaban comiendo la industria desde adentro y quedaron pipones.</p>
+
+      <p>Así llega Coachella, la invitación al show de Jimmy Fallon, Fuji Rock en Japón. En la gira, Anita no los acompañó, pero incorporaron 3 vientos de metal y, en la mayoría de los espectáculos con escenarios grandes, a una media docena de fisicoculturistas que los levantaban y bailaban con ellos. Los llevaron por toda Latinoamérica, y cuentan que el presupuesto en alimentarlos era tan grande como sus músculos. Paco dice entre risas algo amargas en una entrevista que la gente del hotel "se quería matar, comían como 3 veces en el desayuno".</p>
+
+      <p>En esta era sobresalen además sus outfits: el estilismo, curado por Celina Lattanzio, conocida como "negra negra", en cada show era una nueva imagen — se reinventan en cada ciudad, tocando el mismo show milimétricamente pautado.</p>
+
+      <p>Todo resulta en una gira en estrella alrededor del mundo, 7 premios Gardel y 5 Latin Grammy. El éxito y el lujo empieza a sentirse pesado y estructurado. Llevaron sus cuerpos al extremo mientras cosechaban fans en cada concierto alrededor del globo.</p>
+
+      <p>Y como en toda buena historia de ascenso, el vértigo pasa factura y tiene que haber una caída. En la cima del éxito, con 5 Latin Grammys en la mano, anunciaron su disco TOP OF THE HILLS a grito pelado, mientras los fans en las redes sociales les pedían que descansen. Las señales del burnout parecían evidentes para todos su fandom, no para ellos.</p>
+
+      <p>En esta historia la UATS y el fandom de Ca7riel y Paco merecen una historia aparte, y esa historia será contada — no aquí ni ahora.</p>
+
+      <p>Febriles lanzaron "GIMME MORE", febriles anunciaron el lanzamiento del nuevo disco, y en un acto de sinceridad de diseño cancelaron todo y se fueron a descansar. Por un rato. Un mes nomás.</p>
+
+      <div class="foto-intercalada">
+        <img src="images/historia-lofficiel.webp" alt="CA7RIEL y Paco Amoroso, editorial de moda">
+        <div class="pie">Foto: L'Officiel</div>
+      </div>
+
+      <p><em>Free Spirits</em>, el capítulo más reciente, es la respuesta a ese agotamiento y también su narrativa más conceptual, musicalmente elaborada y ambiciosa. Aquí volvieron a la fórmula ganadora de BAÑO MARIA y PAPOTA, siendo Vibarco, Gino Borri y Federico Vindver parte de los autores de las canciones del disco. Se incorpora Rafa Arcaute ya no solo como director sino también como autor de las canciones, junto a su manager Francisco Wechsler como productor musical, entre varias otras figuras destacadas.</p>
+
+      <p>El concepto: un falso centro de bienestar espiritual, todo lino blanco, Sound Cloud Pantone, y paletas neutras, con colaboraciones de peso (Sting, Jack Black, Anderson .Paak) jugando el papel de gurúes de una sanación propia de una aceptación de los miedos del costo de esta fama. Debajo de la estética zen, las letras siguen hablando de sus miedos: a envejecer, a que se apague la música, a quedar solos cuando se corra el telón. También de lo asfixiante de estar siempre en el ojo y la boca de todos, y de la ambición desmedida de seguir deseando siempre más, de los excesos, como cantan en la ex "GIMME MORE", canción que fue renombrada para este nuevo disco como "QUIERO MÁS".</p>
+
+      <p class="pull-quote">Debajo de la estética zen, las letras siguen hablando de sus miedos: a envejecer, a que se apague la música, a quedar solos cuando se corra el telón.</p>
+
+      <p>No hay una única conclusión posible después de siete Eras: CA7RIEL & Paco Amoroso no sobrevivieron a la industria evitando sus reglas, sino jugando con ellas hasta el límite, construyendo, una y otra vez, su propia crisis para poder demolerla en público y volver a nacer del otro lado. Rodeados de creativos de diferente índole y de alto nivel. No es que hayan encontrado la fórmula del éxito: es que decidieron reinventarse en voz alta, con la ironía y el pecho puesto por delante, rodeados de amigos, como la única forma de que el éxito no los consumiera y la empresa los devorase.</p>
+
+      <p class="pull-quote">No sobrevivieron a la industria evitando sus reglas, sino jugando con ellas hasta el límite, construyendo, una y otra vez, su propia crisis para poder demolerla en público y volver a nacer.</p>
+    </div>
+  </article>
+
+  <div class="sobre-autor">
+    <h3>Sobre Luces del Sur</h3>
+    <p>Luces del Sur es un proyecto editorial independiente de periodismo cultural enfocado en música argentina contemporánea. Cubre artistas, trayectorias y escenas con criterio propio: sin agenda de prensa, sin notas de difusión. El primer proyecto es Universo — un archivo editorial sobre CA7RIEL & Paco Amoroso que documenta sus siete eras musicales a través de discografía, conciertos, colaboraciones y prensa. Escrito, diseñado y desarrollado por P.L, Buenos Aires, 2026.</p>
+  </div>
+
+  <div class="elegi-era">
+    <h3>Sumergite en los detalles de su Universo. Elegí tu era.</h3>
+    <div class="elegi-era-botones">
+      <a href="era1.html">1 · Astor</a>
+      <a href="era2.html">2 · Nace el mito</a>
+      <a href="era3.html">3 · FLY SOLO</a>
+      <a href="era4.html">4 · Temporada II</a>
+      <a href="era5.html">5 · Baño María</a>
+      <a href="era6.html">6 · Papota</a>
+      <a href="era7.html">7 · Free Spirits</a>
+    </div>
+  </div>
+
+  <footer>
+    Escrito y diseñado por <a href="https://lucesdelsur.substack.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Luces del Sur</a> · última actualización: <span id="last-update">—</span>
+    <div style="font-style:italic; font-size:.78rem; opacity:.75; margin-top:10px; max-width:600px; margin-left:auto; margin-right:auto;">Fotografías sin crédito individual: material de prensa o de las redes oficiales de CA7RIEL & Paco Amoroso. Los derechos pertenecen a sus autores y/o representantes.</div>
+  </footer>
+
+<script>
+  (function setLastUpdate(){
+    const el = document.getElementById('last-update');
+    if(!el) return;
+    const d = new Date(document.lastModified);
+    if(isNaN(d.getTime())){ el.textContent = 'sin datos'; return; }
+    el.textContent = d.toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric' });
+  })();
+</script>
+<script data-goatcounter="https://lucesdelsur.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
